@@ -1,7 +1,7 @@
 {
   "engine": "chromium via playwright-core",
   "baseUrl": "http://127.0.0.1:4399",
-  "builtAt": "2026-09-24T19:58:44.452Z",
+  "builtAt": "2026-09-24T20:54:29.336Z",
   "total": 18,
   "passed": 18,
   "failed": 0,
@@ -9,7 +9,7 @@
     {
       "name": "pfx-to-pem: modern AES-256 file → key + cert + match",
       "ok": true,
-      "ms": 1559,
+      "ms": 449,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -20,7 +20,7 @@
     {
       "name": "pfx-to-pem: wrong password → clear error",
       "ok": true,
-      "ms": 206,
+      "ms": 162,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -30,7 +30,7 @@
     {
       "name": "pfx-to-pem: EC file → friendly unsupported + roadmap link",
       "ok": true,
-      "ms": 214,
+      "ms": 180,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -40,7 +40,7 @@
     {
       "name": "pem-to-pfx: leaf key + chain → downloadable PFX, forge-verified",
       "ok": true,
-      "ms": 573,
+      "ms": 426,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -51,7 +51,7 @@
     {
       "name": "pem-to-pfx: mismatched key/cert → refused with hint",
       "ok": true,
-      "ms": 201,
+      "ms": 204,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -61,7 +61,7 @@
     {
       "name": "pem-to-pfx: EC key → friendly unsupported",
       "ok": true,
-      "ms": 130,
+      "ms": 136,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -71,7 +71,7 @@
     {
       "name": "certificate-decoder: PEM cert → subject/SANs/signature + raw JSON",
       "ok": true,
-      "ms": 402,
+      "ms": 418,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -82,7 +82,7 @@
     {
       "name": "certificate-decoder: garbage input → error, no crash",
       "ok": true,
-      "ms": 116,
+      "ms": 113,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -92,7 +92,7 @@
     {
       "name": "csr-decoder: leaf CSR → CN, SANs, signature verified",
       "ok": true,
-      "ms": 129,
+      "ms": 133,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -103,7 +103,7 @@
     {
       "name": "csr-decoder: garbage input → error",
       "ok": true,
-      "ms": 137,
+      "ms": 136,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -113,7 +113,7 @@
     {
       "name": "key-cert-match: real pair → MATCH",
       "ok": true,
-      "ms": 221,
+      "ms": 237,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -123,7 +123,7 @@
     {
       "name": "key-cert-match: different pair → NO MATCH",
       "ok": true,
-      "ms": 192,
+      "ms": 193,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -133,7 +133,7 @@
     {
       "name": "key-cert-match: garbage key → error",
       "ok": true,
-      "ms": 165,
+      "ms": 138,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -143,7 +143,7 @@
     {
       "name": "chain-order: shuffled root/leaf/inter → ordered leaf→root",
       "ok": true,
-      "ms": 188,
+      "ms": 174,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -155,7 +155,7 @@
     {
       "name": "chain-order: missing intermediate → reported + unlinked root",
       "ok": true,
-      "ms": 168,
+      "ms": 134,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -165,7 +165,7 @@
     {
       "name": "der-jwk-inspector: DER certificate file → summary",
       "ok": true,
-      "ms": 154,
+      "ms": 144,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -175,7 +175,7 @@
     {
       "name": "der-jwk-inspector: JWK set → 2 keys with kid/alg/use",
       "ok": true,
-      "ms": 141,
+      "ms": 137,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -186,7 +186,7 @@
     {
       "name": "der-jwk-inspector: invalid JWK JSON → error",
       "ok": true,
-      "ms": 139,
+      "ms": 145,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {

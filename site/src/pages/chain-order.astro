@@ -4,7 +4,7 @@ import ToolPage from '../layouts/ToolPage.astro';
 
 <ToolPage
   title="Certificate Chain Order Tool — leaf to root"
-  description="Sort a bundle of certificates into the correct chain order (leaf → intermediate → root) and find missing issuer links. Runs in your browser. PEM and DER supported."
+  description="Sort a certificate bundle into chain order (leaf → intermediate → root) and find missing issuer links. Runs in your browser, PEM and DER."
   h1="Certificate chain order"
   lead="Paste several certificates (or drop files). CertKit figures out which is the leaf, orders the chain leaf → intermediate → root, verifies each issuer signature and lists missing links."
   path="/chain-order/"

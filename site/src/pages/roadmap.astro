@@ -1,5 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+
+const siteUrl = SITE.url.replace(/\/$/, '');
+
+const roadmapLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Roadmap — EC support first',
+  url: `${siteUrl}/roadmap/`,
+  description:
+    'CertKit roadmap: EC/Ed25519 support, batch mode, offline packaging, CLI and improved PKCS#12 write options. See what shipped in v1 and what comes next.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'LocalCertKit',
+    url: `${siteUrl}/`,
+  },
+};
 
 const planned = [
   {
@@ -38,6 +55,7 @@ const shipped = [
 <Base
   title="Roadmap — EC support first"
   description="CertKit roadmap: EC/Ed25519 support, batch mode, offline packaging, CLI and improved PKCS#12 write options. See what shipped in v1 and what comes next."
+  jsonLd={[roadmapLd]}
 >
   <div class="wrap tool-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">

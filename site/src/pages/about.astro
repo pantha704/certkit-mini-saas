@@ -1,10 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
+import { REPO_URL, SITE } from '../lib/site';
+
+const siteUrl = SITE.url.replace(/\/$/, '');
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'LocalCertKit',
+  url: `${siteUrl}/`,
+  description:
+    'Browser-local certificate and key tools: PFX to PEM conversion, certificate and CSR decoding, key matching and chain ordering. Files are never uploaded.',
+  sameAs: [REPO_URL],
+};
 ---
 
 <Base
   title="About — why CertKit exists"
-  description="CertKit is a set of browser-local certificate and key utilities built around one rule: private keys never leave your device. RSA-first v1, EC support on the roadmap."
+  description="CertKit is a set of browser-local certificate and key tools built on one rule: private keys never leave your device. RSA-first v1, EC support on the roadmap."
+  jsonLd={[orgLd]}
 >
   <div class="wrap tool-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -48,7 +62,7 @@ import Base from '../layouts/Base.astro';
 
       <h2>What’s next</h2>
       <p>
-        EC/Ed25519 support, batch mode and offline/desktop packaging are on the
+        EC/Ed25519 support, batch mode and offline/desktop packaging are on the{' '}
         <a href="/roadmap/">roadmap</a>. The direction is deliberately conservative: every new
         capability ships only when it is proven and documented as honestly as the current ones.
       </p>

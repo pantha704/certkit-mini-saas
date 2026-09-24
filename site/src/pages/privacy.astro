@@ -1,10 +1,28 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+
+const siteUrl = SITE.url.replace(/\/$/, '');
+
+const privacyLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Privacy — nothing leaves your browser',
+  url: `${siteUrl}/privacy/`,
+  description:
+    'CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'LocalCertKit',
+    url: `${siteUrl}/`,
+  },
+};
 ---
 
 <Base
   title="Privacy — nothing leaves your browser"
-  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts. Read exactly what the site does and does not do."
+  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts."
+  jsonLd={[privacyLd]}
 >
   <div class="wrap tool-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -41,7 +59,7 @@ import Base from '../layouts/Base.astro';
         The site is static and hosted on Cloudflare Pages. Like virtually every web host, Cloudflare
         receives standard request metadata (IP address, user agent, requested URL) when your browser
         loads a page — that is how the HTML reaches you. No request that runs a tool carries your
-        data, so that metadata never includes a file, key or password. See
+        data, so that metadata never includes a file, key or password. See{' '}
         <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare’s privacy policy</a>
         for how they handle request logs.
       </p>
@@ -69,7 +87,7 @@ import Base from '../layouts/Base.astro';
       </p>
       <h2>Contact</h2>
       <p>
-        Questions about the privacy model? The parsing library, tests and site source are public at
+        Questions about the privacy model? The parsing library, tests and site source are public at{' '}
         <a href="https://github.com/pantha704/localcertkit">github.com/pantha704/localcertkit</a>,
         open an issue if anything looks wrong.
       </p>
