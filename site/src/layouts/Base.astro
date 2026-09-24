@@ -49,11 +49,9 @@ const pageTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
       import '../scripts/smooth-scroll';
     </script>
     <!-- Cloudflare Web Analytics: cookie-less, anonymous visit counts (see /privacy/) -->
-    <script
-      is:inline
-      type="module"
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token": "27834a9157f545d9b7a643908251582b"}'></script>
+    <Fragment
+      set:html={`<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "27834a9157f545d9b7a643908251582b"}'></script><!-- End Cloudflare Web Analytics -->`}
+    />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
