@@ -23,6 +23,24 @@
   }
 
   /**
+   * Notify the motion layer (bundled gsap) that an element appeared or changed.
+   * Plain custom event so this file keeps zero dependencies; if nothing is
+   * listening, nothing happens.
+   * @param {'reveal'|'pop'} effect
+   * @param {Element} el
+   */
+  function emitMotion(effect, el) {
+    if (!el) return;
+    try {
+      document.dispatchEvent(
+        new CustomEvent('certkit:motion', { detail: { effect: effect, el: el } })
+      );
+    } catch (_) {
+      /* no CustomEvent support: motion is skipped, everything stays visible */
+    }
+  }
+
+  /**
    * Show an error in the page's role=alert box.
    * @param {string} message
    * @param {{href: string, label: string}} [link] optional follow-up link
@@ -44,12 +62,16 @@
       p.appendChild(a);
       el.appendChild(p);
     }
+    var wasHidden = el.hidden;
     el.hidden = false;
+    if (wasHidden) emitMotion('pop', el);
   }
 
   function show(id) {
     var el = document.getElementById(id);
-    if (el) el.hidden = false;
+    if (!el || !el.hidden) return;
+    el.hidden = false;
+    emitMotion('reveal', el);
   }
 
   function hide(id) {
@@ -209,6 +231,7 @@
     if (!el) return;
     el.className = 'badge badge-' + kind;
     el.textContent = label;
+    emitMotion('pop', el);
   }
 
   /** Tiny DOM builder: el('div', {class:'x', text:'hi'}, [childNode]) */

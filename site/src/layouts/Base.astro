@@ -44,6 +44,9 @@ const pageTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+    <script>
+      import '../scripts/motion';
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>

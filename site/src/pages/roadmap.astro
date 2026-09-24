@@ -52,7 +52,7 @@ const shipped = [
       <p class="lead">What is shipped, what is next, and what is explicitly not promised yet.</p>
     </header>
 
-    <section class="card">
+    <section class="card" data-reveal>
       <h2>Shipped — v1.0</h2>
       <ul>
         {shipped.map((item) => (
@@ -62,7 +62,7 @@ const shipped = [
       <p class="small muted">All of it RSA-first, browser-local, and covered by an automated test harness.</p>
     </section>
 
-    <section class="card">
+    <section class="card" data-reveal>
       <h2>Planned — in rough order</h2>
       {planned.map((item) => (
         <div>
@@ -76,7 +76,7 @@ const shipped = [
       </p>
     </section>
 
-    <section class="card">
+    <section class="card" data-reveal>
       <h2>Not planned</h2>
       <ul>
         <li>Uploading or server-side processing of keys — that would defeat the point.</li>

@@ -51,8 +51,8 @@
           ['SANs', info.san.length ? info.san.map(function (s) { return s.type + ':' + s.value; }).join(', ') : 'none'],
           ['SHA-256 fingerprint', info.sha256Fingerprint],
         ]);
-        document.getElementById('der-results').hidden = false;
         UI.setOutput('out-der-pem', r.pem);
+        UI.show('der-results');
         UI.announce('DER certificate inspected. Subject: ' + UI.formatDN(info.subject) + '.');
       } catch (err) {
         fail(err);
@@ -153,7 +153,7 @@
     };
     UI.setOutput('out-jwk-json', JSON.stringify(report, null, 2));
 
-    document.getElementById('jwk-results').hidden = false;
+    UI.show('jwk-results');
     UI.announce(r.kind + ' parsed: ' + r.keyCount + ' key(s). No verification performed.');
   });
 })();

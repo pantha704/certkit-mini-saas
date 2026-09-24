@@ -58,9 +58,9 @@ const jsonLd = [
   jsonLd={jsonLd}
 >
   <div class="wrap">
-    <section class="hero">
-      <h1>Certificate tools that never see your keys</h1>
-      <p class="lead">
+    <section class="hero" data-motion="hero">
+      <h1 data-motion="hero-title">Certificate tools that never see your keys</h1>
+      <p class="lead" data-motion="hero-sub">
         PFX conversion, certificate and CSR decoding, key matching, chain ordering — everything runs
         in your browser. No uploads, no accounts, no server.
       </p>
@@ -79,7 +79,7 @@ const jsonLd = [
       <ul class="tool-grid">
         {
           TOOLS.map((tool) => (
-            <li>
+            <li data-motion="hero-card">
               <a class="tool-card" href={tool.href}>
                 <h3>{tool.label}</h3>
                 <p>{tool.blurb}</p>
@@ -90,7 +90,7 @@ const jsonLd = [
       </ul>
     </section>
 
-    <section class="section" id="how-local" aria-labelledby="how-local-heading">
+    <section class="section" id="how-local" aria-labelledby="how-local-heading" data-reveal>
       <h2 id="how-local-heading">How “local” works</h2>
       <div class="card">
         <ul>
@@ -116,7 +116,7 @@ const jsonLd = [
       </div>
     </section>
 
-    <section class="section" aria-labelledby="trust-heading">
+    <section class="section" aria-labelledby="trust-heading" data-reveal>
       <h2 id="trust-heading">Trust &amp; transparency</h2>
       <div class="card">
         <ul>
@@ -139,10 +139,10 @@ const jsonLd = [
       </div>
     </section>
 
-    <section class="section faq-section" aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Frequently asked questions</h2>
+    <section class="section faq-section" aria-labelledby="faq-heading" data-reveal>
+      <h2 id="faq-heading" data-reveal-item>Frequently asked questions</h2>
       {faq.map((item) => (
-        <details>
+        <details data-reveal-item>
           <summary>{item.q}</summary>
           <p>{item.a}</p>
         </details>
