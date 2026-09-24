@@ -21,7 +21,7 @@ const faq = [
   },
   {
     q: 'Does it cost anything?',
-    a: 'No. CertKit is free, has no accounts, no ads and no tracking. There is a reserved slot for a future certificate-provider partner link, and it is currently unused — no affiliate links are shown.',
+    a: 'No. CertKit is free, has no accounts, no ads and no personal tracking. There is a reserved slot for a future certificate-provider partner link, and it is currently unused — no affiliate links are shown.',
   },
   {
     q: 'Should I use this with production keys?',
@@ -67,7 +67,7 @@ const jsonLd = [
       <ul class="hero-badges">
         <li>No uploads</li>
         <li>No accounts</li>
-        <li>No ads, no tracking</li>
+        <li>No ads, cookie-less counts</li>
         <li>Free</li>
         <li>Works offline once loaded</li>
       </ul>
@@ -81,7 +81,9 @@ const jsonLd = [
           TOOLS.map((tool) => (
             <li data-motion="hero-card">
               <a class="tool-card" href={tool.href}>
-                <h3>{tool.label}</h3>
+                <h3>
+                  {tool.label} <span class="card-arrow" aria-hidden="true">→</span>
+                </h3>
                 <p>{tool.blurb}</p>
               </a>
             </li>
@@ -92,7 +94,7 @@ const jsonLd = [
 
     <section class="section" id="how-local" aria-labelledby="how-local-heading" data-reveal>
       <h2 id="how-local-heading">How “local” works</h2>
-      <div class="card">
+      <div class="card feature-card">
         <ul>
           <li>
             <strong>One vendored library.</strong> Parsing and crypto use a pinned copy of
@@ -118,9 +120,14 @@ const jsonLd = [
 
     <section class="section" aria-labelledby="trust-heading" data-reveal>
       <h2 id="trust-heading">Trust &amp; transparency</h2>
-      <div class="card">
+      <div class="card feature-card">
         <ul>
-          <li>No ads. No analytics. No tracking pixels. No affiliate links (a partner slot exists in the config and is unused).</li>
+          <li>
+            No ads. No tracking pixels. Anonymous, cookie-less visit counts via Cloudflare Web
+            Analytics — no personal data, no cross-site tracking, no fingerprinting. All file
+            processing stays local: every tool works fully offline once the page has loaded.
+          </li>
+          <li>No affiliate links (a certificate-provider partner slot exists in the config and is unused).</li>
           <li>No accounts, no email required, no rate limits, no paid tier.</li>
           <li>
             {
@@ -144,7 +151,11 @@ const jsonLd = [
       {faq.map((item) => (
         <details data-reveal-item>
           <summary>{item.q}</summary>
-          <p>{item.a}</p>
+          <div class="faq-body">
+            <div class="faq-body-inner">
+              <p>{item.a}</p>
+            </div>
+          </div>
         </details>
       ))}
     </section>

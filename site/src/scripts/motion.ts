@@ -1,8 +1,9 @@
 /**
  * CertKit motion layer.
  *
- * GSAP core only, bundled from npm (no CDN, no runtime network calls) so the
- * site's "no third-party requests" claim stays true. Motion uses transform and
+ * GSAP core only, bundled from npm (self-hosted, no CDN, no runtime network calls of its
+ * own) — the only third-party request the site makes is the Cloudflare Web Analytics
+ * beacon. Motion uses transform and
  * opacity only and nothing is hidden in CSS: with JavaScript off every page is
  * fully readable, and with prefers-reduced-motion the page keeps its instant,
  * final state.
@@ -22,6 +23,10 @@ const all = <T extends Element>(selector: string, root: ParentNode = document): 
 /** True when the element (or an ancestor) is currently rendered. */
 const isRendered = (el: HTMLElement): boolean => el.getClientRects().length > 0;
 
+/** Result rows that get a small staggered reveal when their container lands. */
+const ROW_SELECTOR =
+  '.chain-list > li, #links-list > li, table.data tbody > tr, [data-stagger] > *';
+
 /** Tool result first appears after processing: y 10 → 0 + fade, 220ms. */
 function playReveal(container: HTMLElement): void {
   gsap.killTweensOf(container);
@@ -36,6 +41,22 @@ function playReveal(container: HTMLElement): void {
       clearProps: 'transform,opacity',
     }
   );
+
+  // Rows (chain items, issuer links, JWK keys, table rows) follow in a small
+  // 40 ms stagger so a long result reads top-to-bottom instead of popping in.
+  const rows = all<HTMLElement>(ROW_SELECTOR, container);
+  if (rows.length) {
+    gsap.killTweensOf(rows);
+    gsap.from(rows, {
+      y: 8,
+      opacity: 0,
+      duration: 0.22,
+      ease: 'power2.out',
+      stagger: 0.04,
+      delay: 0.04,
+      clearProps: 'transform,opacity',
+    });
+  }
 
   // State badges are usually set while the container is still hidden, so pop
   // the badge as the result lands instead of when it could not be seen.
@@ -82,6 +103,40 @@ document.addEventListener('certkit:motion', (event) => {
   if (detail.effect === 'reveal') playReveal(detail.el);
   else if (detail.effect === 'pop') playPop(detail.el);
 });
+
+/**
+ * FAQ <details>: open runs as a CSS keyframe on the .faq-body grid wrapper
+ * (0fr → 1fr); close is intercepted here because a closed <details> hides its
+ * content instantly, so the 0fr transition needs the open attribute to stay on
+ * for its 200 ms. Reduced motion never reaches this code — native toggle.
+ */
+function setupFaq(): void {
+  all<HTMLDetailsElement>('.faq-section details').forEach((el) => {
+    const summary = el.querySelector('summary');
+    if (!summary) return;
+
+    summary.addEventListener('click', (event) => {
+      if (el.classList.contains('is-closing')) {
+        event.preventDefault(); // mid-close click: ignore, animation already running
+        return;
+      }
+      if (!el.open) return; // opening: the CSS keyframe covers it
+
+      event.preventDefault();
+      const body = el.querySelector<HTMLElement>('.faq-body');
+      el.classList.add('is-closing');
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        el.open = false;
+        el.classList.remove('is-closing');
+      };
+      body?.addEventListener('transitionend', finish, { once: true });
+      window.setTimeout(finish, 260); // fallback if transitionend is missed
+    });
+  });
+}
 
 /** Home hero entrance: eyebrow → h1 → sub → tool cards, 65ms apart, y 22 → 0. */
 function setupHero(): void {
@@ -136,4 +191,5 @@ const mm = gsap.matchMedia();
 mm.add('(prefers-reduced-motion: no-preference)', () => {
   setupHero();
   setupScrollReveal();
+  setupFaq();
 });

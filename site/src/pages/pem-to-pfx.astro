@@ -55,7 +55,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         <label class="field-label" for="key-file">Key file <span class="hint">optional — fills the box below</span></label>
         <input type="file" id="key-file" accept=".pem,.key,.txt" />
       </div>
-      <textarea id="key-pem" class="mono" spellcheck="false" rows="7" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
+      <textarea data-lenis-prevent id="key-pem" class="mono" spellcheck="false" rows="7" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
     </div>
 
     <div class="field">
@@ -67,7 +67,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         <label class="field-label" for="cert-file">Certificate file <span class="hint">optional — fills the box below</span></label>
         <input type="file" id="cert-file" accept=".pem,.crt,.cer,.txt" />
       </div>
-      <textarea id="cert-pems" class="mono" spellcheck="false" rows="7" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea data-lenis-prevent id="cert-pems" class="mono" spellcheck="false" rows="7" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
 
     <div class="field">
@@ -112,7 +112,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       <h3>Base64 of the PFX (optional)</h3>
       <p class="small muted">Some platforms want the container as text. Copy it only into trusted systems.</p>
       <label class="visually-hidden" for="out-base64">Base64-encoded PKCS#12</label>
-      <textarea id="out-base64" class="mono" readonly spellcheck="false"></textarea>
+      <textarea data-lenis-prevent id="out-base64" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-base64" data-copy-status="copy-status-b64">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-base64" data-filename="certkit.p12.base64.txt" data-mime="text/plain;charset=utf-8">Download .txt</button>

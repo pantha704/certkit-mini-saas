@@ -3,7 +3,8 @@
 **Browser-local certificate & key toolkit — your private key never leaves your browser.**
 
 Static site (Astro) + a single vendored crypto/ASN.1 library (node-forge 1.4.0). No server,
-no uploads, no accounts, no tracking. RSA-first v1; EC/Ed25519 is on the roadmap.
+no uploads, no accounts, no personal tracking; one cookie-less Cloudflare Web Analytics beacon
+counts visits anonymously. RSA-first v1; EC/Ed25519 is on the roadmap.
 
 Live: <https://localcertkit.pages.dev>
 
@@ -86,8 +87,10 @@ wrangler pages deploy site/dist --project-name localcertkit --branch main
 ## Privacy model
 
 Files are read with the browser File API and processed by JavaScript served from this domain.
-No request in any tool flow carries a file, key or password. No cookies, no localStorage, no
-analytics. The same code is exercised by the Node and browser tests.
+No request in any tool flow carries a file, key or password. No cookies, no localStorage. The one
+third-party request on the site is the cookie-less Cloudflare Web Analytics beacon, which supplies
+anonymous aggregate visit counts (page, referrer, country, browser family) and never sees your
+files. The same code is exercised by the Node and browser tests.
 
 ## Honest limitations (v1)
 

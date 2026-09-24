@@ -46,8 +46,10 @@
   display: none !important;
 }
 
-html {
-  scroll-behavior: smooth;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -498,6 +500,7 @@ input[type='file']::file-selector-button {
 .file-drop.is-dragging input[type='file'] {
   border-color: var(--accent);
   background: var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--accent-soft);
 }
 
 .file-drop .field-label {
@@ -824,10 +827,31 @@ table.data thead th {
 }
 
 .faq-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
   cursor: pointer;
   font-weight: 700;
   color: var(--ink);
   padding: 0.75rem 0.1rem;
+  list-style: none;
+}
+
+.faq-section summary::-webkit-details-marker {
+  display: none;
+}
+
+/* chevron: rotates as the answer opens/closes */
+.faq-section summary::after {
+  content: '';
+  flex: none;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .faq-section summary:hover {
@@ -839,8 +863,54 @@ table.data thead th {
   margin-bottom: 0.75rem;
 }
 
+.faq-section details[open] summary::after {
+  transform: rotate(-135deg);
+}
+
+/* Answer wrapper: grid-template-rows 0fr → 1fr, 200ms.
+   Opening is a keyframe (a previously display:none child has no style to
+   transition from); closing is driven by the is-closing class from motion.ts. */
+.faq-body {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.faq-body-inner {
+  overflow: hidden;
+}
+
+.faq-section details[open] .faq-body {
+  grid-template-rows: 1fr;
+  animation: faq-open 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.faq-section details.is-closing .faq-body {
+  grid-template-rows: 0fr;
+  animation: none;
+  transition: grid-template-rows 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes faq-open {
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+}
+
 .faq-section details p {
   color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-section details[open] .faq-body {
+    animation: none;
+  }
+
+  .faq-section summary::after {
+    transition: none;
+  }
 }
 
 /* ---------- misc ---------- */
@@ -909,19 +979,136 @@ table.data thead th {
 }
 
 /* ---------- motion — CSS micro-interactions ----------
-   JS-driven entrances live in src/scripts/motion.ts (bundled gsap).
-   Hover lift only for fine pointers that can hover; press feedback everywhere. */
+   JS-driven entrances live in src/scripts/motion.ts (bundled gsap);
+   Lenis smooth scrolling lives in src/scripts/smooth-scroll.ts and is skipped
+   entirely under prefers-reduced-motion. Only transform, opacity, background,
+   border-color and box-shadow transition here (plus the FAQ grid-rows
+   accordion). No scale(0). All durations ≤ 300 ms; hover lifts only for fine
+   pointers that can actually hover, press feedback everywhere. */
 
+/* Lenis base styles (subset of the self-hosted lenis.css — no CDN). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto; /* Lenis drives scrolling; never fight it with CSS */
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Buttons — hover bg/shadow 150 ms, press scale 120 ms. */
 .btn,
-.btn-secondary,
-.tool-card,
-input[type='file'] {
+.btn-secondary {
   transition:
-    transform 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 120ms cubic-bezier(0.23, 1, 0.32, 1),
     background-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
     border-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
     color 150ms cubic-bezier(0.23, 1, 0.32, 1),
-    opacity 150ms cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn:not(:disabled):active,
+.tool-card:active {
+  transform: scale(0.97);
+}
+
+/* Tool cards — lift, shadow, arrow nudge, 160 ms, hover-capable only. */
+.tool-card {
+  position: relative;
+  transition:
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-arrow {
+  display: inline-block;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Feature cards (home "how local" + trust) — same lift, no link semantics. */
+.feature-card {
+  transition:
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Form surfaces — focus ring + border colour, 150 ms. */
+input[type='text'],
+input[type='password'],
+textarea,
+select,
+input[type='file'] {
+  transition:
+    border-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+input[type='text']:focus-visible,
+input[type='password']:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+input[type='file']:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* File input also gets a soft press/hover motion. */
+input[type='file'] {
+  transition:
+    transform 160ms cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    background-color 150ms cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 150ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Header nav — underline slides in on hover/focus-visible, 160 ms. */
+.site-nav a {
+  position: relative;
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0.65rem;
+  right: 0.65rem;
+  bottom: 0.16rem;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.site-nav a[aria-current='page']::after {
+  display: none; /* the pill already marks the current page */
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* Brand mark — barely-there scale, 160 ms. */
+.brand svg {
+  transform-origin: center;
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -930,12 +1117,14 @@ input[type='file'] {
     border-color: var(--accent-dark);
     color: #fff;
     transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgb(67 56 202 / 0.28);
   }
 
   .btn-secondary:hover {
     color: var(--accent-dark);
     background: var(--accent-soft);
     border-color: var(--accent);
+    box-shadow: 0 6px 16px rgb(11 18 32 / 0.1);
   }
 
   .tool-card:hover {
@@ -943,30 +1132,55 @@ input[type='file'] {
     background: var(--accent-soft);
     color: inherit;
     transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgb(11 18 32 / 0.1);
+  }
+
+  .tool-card:hover .card-arrow,
+  .tool-card:focus-visible .card-arrow {
+    transform: translateX(2px);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-line);
+    box-shadow: 0 10px 24px rgb(11 18 32 / 0.08);
   }
 
   input[type='file']:hover {
     border-color: var(--accent);
   }
-}
 
-.btn:not(:disabled):active,
-.tool-card:active {
-  transform: scale(0.97);
+  .brand:hover svg {
+    transform: scale(1.02);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .btn,
   .btn-secondary,
   .tool-card,
+  .feature-card,
+  .brand svg,
+  .card-arrow,
+  input[type='text'],
+  input[type='password'],
+  textarea,
+  select,
   input[type='file'] {
+    transition: none;
+  }
+
+  .site-nav a::after {
     transition: none;
   }
 
   .btn:not(:disabled):hover,
   .btn:not(:disabled):active,
   .tool-card:hover,
-  .tool-card:active {
+  .tool-card:active,
+  .feature-card:hover,
+  .brand:hover svg,
+  .tool-card:hover .card-arrow {
     transform: none;
   }
 }

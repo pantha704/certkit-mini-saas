@@ -44,7 +44,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       </div>
       <div class="field">
         <label for="der-input">or paste base64 DER / PEM</label>
-        <textarea id="der-input" class="mono" spellcheck="false" rows="5" placeholder="MIID... (base64)" ></textarea>
+        <textarea data-lenis-prevent id="der-input" class="mono" spellcheck="false" rows="5" placeholder="MIID... (base64)" ></textarea>
       </div>
       <div class="btn-row">
         <button type="submit" class="btn" id="der-run">Inspect certificate</button>
@@ -59,7 +59,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-der"></span>
       </div>
       <label class="visually-hidden" for="out-der-pem">Certificate PEM</label>
-      <textarea id="out-der-pem" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea data-lenis-prevent id="out-der-pem" class="mono" readonly spellcheck="false" hidden></textarea>
       <p class="small muted">
         Need the full view? <a href="/certificate-decoder/">Open it in the certificate decoder</a>
         (with the raw ASN.1 JSON and extension list).
@@ -78,7 +78,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       </div>
       <div class="field">
         <label for="jwk-input">or paste JWK / JWK-set JSON</label>
-        <textarea id="jwk-input" class="mono" spellcheck="false" rows="7" placeholder="paste JSON: &#123; &quot;kty&quot;: &quot;RSA&quot;, &quot;kid&quot;: &quot;…&quot; &#125;"></textarea>
+        <textarea data-lenis-prevent id="jwk-input" class="mono" spellcheck="false" rows="7" placeholder="paste JSON: &#123; &quot;kty&quot;: &quot;RSA&quot;, &quot;kid&quot;: &quot;…&quot; &#125;"></textarea>
       </div>
       <div class="btn-row">
         <button type="submit" class="btn" id="jwk-run">Inspect JWK</button>
@@ -109,7 +109,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-jwk"></span>
       </div>
       <label class="visually-hidden" for="out-jwk-json">JWK inspection report as JSON</label>
-      <textarea id="out-jwk-json" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea data-lenis-prevent id="out-jwk-json" class="mono" readonly spellcheck="false" hidden></textarea>
       <p class="small muted">
         Parsed for inspection only — <strong>no signature verification or key validation is performed</strong>.
         To check a key against a certificate, use the <a href="/key-cert-match/">match checker</a> (RSA).

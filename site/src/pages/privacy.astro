@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 
 <Base
   title="Privacy — nothing leaves your browser"
-  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no analytics, no accounts. Read exactly what the site does and does not do."
+  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts. Read exactly what the site does and does not do."
 >
   <div class="wrap tool-wrap">
     <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -30,7 +30,10 @@ import Base from '../layouts/Base.astro';
       <ul>
         <li>No file, key, password or certificate is transmitted anywhere.</li>
         <li>No cookies, no localStorage, no fingerprinting, no session recording.</li>
-        <li>No analytics, no tracking pixels, no ad networks, no social embeds.</li>
+        <li>
+          No tracking pixels, no ad networks, no social embeds. Visit counts are anonymous and
+          cookie-less — read the <a href="#visit-counts">Visit counts</a> section below.
+        </li>
         <li>No accounts, no email collection, no newsletter.</li>
       </ul>
       <h2>Hosting</h2>
@@ -42,11 +45,27 @@ import Base from '../layouts/Base.astro';
         <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare’s privacy policy</a>
         for how they handle request logs.
       </p>
+      <h2 id="visit-counts">Visit counts</h2>
+      <p>
+        The site loads one small third-party script: Cloudflare Web Analytics
+        (<span class="mono">static.cloudflareinsights.com</span>). It is the only request the page
+        makes to a host other than this one, and it does one thing — records that a page was opened.
+        It sets no cookies, stores nothing on your device, does not fingerprint you and does not
+        follow you across other sites. The aggregate report shows which page was viewed, the
+        referring site, the country and the browser family; never an individual visitor, and never
+        anything about the files you open in a tool.
+      </p>
+      <p>
+        This is a visit counter, not surveillance. Cloudflare processes these aggregate counts under
+        its own privacy policy (linked above). The tools themselves still make no network calls at
+        all.
+      </p>
       <h2>Verifying the claims</h2>
       <p>
         Open DevTools → Network, clear the log, then run any tool: you will see no request appear
-        while your file is processed. Disconnect your network after a page loads and the tools keep
-        working — the strongest possible proof that processing is local.
+        while your file is processed — the only third-party entry is the analytics beacon loaded
+        with the page. Disconnect your network after a page loads and the tools keep working — the
+        strongest possible proof that processing is local.
       </p>
       <h2>Contact</h2>
       <p>
@@ -54,7 +73,7 @@ import Base from '../layouts/Base.astro';
         <a href="https://github.com/pantha704/localcertkit">github.com/pantha704/localcertkit</a>,
         open an issue if anything looks wrong.
       </p>
-      <p class="small muted">Last updated: 24 September 2026.</p>
+      <p class="small muted">Last updated: 25 September 2026.</p>
     </section>
   </div>
 </Base>

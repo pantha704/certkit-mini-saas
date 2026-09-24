@@ -47,7 +47,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         or paste PEM / base64 DER
         <span class="hint">A file wins if both are provided.</span>
       </label>
-      <textarea id="cert-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea data-lenis-prevent id="cert-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="cert-run">Decode certificate</button>
@@ -81,13 +81,13 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-pem"></span>
       </div>
       <label class="visually-hidden" for="out-pem">Certificate PEM</label>
-      <textarea id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea data-lenis-prevent id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
     </div>
 
     <div id="pane-json" hidden>
       <h3>ASN.1 as JSON</h3>
       <p class="small muted">Long values are truncated with a byte count. This is a structural view, not a re-encoded certificate.</p>
-      <pre id="cert-json" class="raw-json" tabindex="0"></pre>
+      <pre id="cert-json" class="raw-json" data-lenis-prevent tabindex="0"></pre>
     </div>
   </section>
 </ToolPage>

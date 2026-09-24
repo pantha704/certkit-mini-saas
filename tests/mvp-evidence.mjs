@@ -43,6 +43,16 @@ rmSync(tmpPfx, { force: true });
 const server = await startServer(dist, PORT);
 const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox'] });
 const context = await browser.newContext({ acceptDownloads: true });
+
+/* The site's only third-party request is the approved, cookie-less Cloudflare
+   Web Analytics beacon. This sandbox has no external egress, so fulfil that
+   one host with an empty module on the context: tool functionality must never
+   depend on a third-party CDN, and its unreachability is not an app error.
+   Every other failed request still surfaces as a console error below. */
+await context.route('https://static.cloudflareinsights.com/**', (route) =>
+  route.fulfill({ status: 200, contentType: 'application/javascript', body: '' })
+);
+
 const page = await context.newPage();
 
 let consoleErrors = [];

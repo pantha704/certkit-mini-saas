@@ -11,7 +11,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 2878,
-          "wallMs": 83.1,
+          "wallMs": 96.2,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -28,12 +28,12 @@
           "bundleLen": 3175,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t2878 bytes\nParse time\t81.7 ms (der 0.4 ms, bags 0.1 ms, pem 0.8 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
+          "renderedSummary": "Summary\nFile size\t2878 bytes\nParse time\t94.4 ms (der 0.5 ms, bags 0.2 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 83.1,
+      "wallMs": 96.2,
       "match": true,
       "pemKeyLen": 1706,
       "pemCertsLen": 1468,
@@ -57,7 +57,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 2708,
-          "wallMs": 71.2,
+          "wallMs": 77.2,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -74,12 +74,12 @@
           "bundleLen": 3175,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t2708 bytes\nParse time\t70.8 ms (der 0 ms, bags 0 ms, pem 0.5 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
+          "renderedSummary": "Summary\nFile size\t2708 bytes\nParse time\t76.8 ms (der 0.2 ms, bags 0 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 71.2,
+      "wallMs": 77.2,
       "match": true,
       "pemKeyLen": 1706,
       "pemCertsLen": 1468,
@@ -103,7 +103,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 2712,
-          "wallMs": 77,
+          "wallMs": 72.2,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -120,12 +120,12 @@
           "bundleLen": 3175,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t2712 bytes\nParse time\t75.7 ms (der 0.1 ms, bags 0.1 ms, pem 0.9 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
+          "renderedSummary": "Summary\nFile size\t2712 bytes\nParse time\t71.8 ms (der 0.1 ms, bags 0 ms, pem 0.4 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 77,
+      "wallMs": 72.2,
       "match": true,
       "pemKeyLen": 1706,
       "pemCertsLen": 1468,
@@ -149,7 +149,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 2848,
-          "wallMs": 82.3,
+          "wallMs": 90.7,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -166,12 +166,12 @@
           "bundleLen": 3175,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t2848 bytes\nParse time\t81 ms (der 0.1 ms, bags 0.1 ms, pem 0.9 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
+          "renderedSummary": "Summary\nFile size\t2848 bytes\nParse time\t90.2 ms (der 0.1 ms, bags 0.1 ms, pem 0.5 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 82.3,
+      "wallMs": 90.7,
       "match": true,
       "pemKeyLen": 1706,
       "pemCertsLen": 1468,
@@ -195,7 +195,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 2779,
-          "wallMs": 70,
+          "wallMs": 74.6,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -212,12 +212,12 @@
           "bundleLen": 3175,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t2779 bytes\nParse time\t68.9 ms (der 0.1 ms, bags 0 ms, pem 0.3 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
+          "renderedSummary": "Summary\nFile size\t2779 bytes\nParse time\t73.4 ms (der 0 ms, bags 0 ms, pem 1 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike\nCN\tmodern.certkit.test\n\nIssuer\t\nC\tIN\nST\tWB\nL\tKolkata\nO\tCertKit Test\nOU\tSpike"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 70,
+      "wallMs": 74.6,
       "match": true,
       "pemKeyLen": 1706,
       "pemCertsLen": 1468,
@@ -241,7 +241,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 3608,
-          "wallMs": 90,
+          "wallMs": 86.3,
           "certs": 2,
           "keyType": "RSA",
           "match": true,
@@ -258,12 +258,12 @@
           "bundleLen": 4206,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t3608 bytes\nParse time\t89.4 ms (der 0.1 ms, bags 0 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":2}\nPrivate key\tRSA\nCertificates\t2\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1\nSubject\t\nCN\tleaf.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tinter.certkit.test\nO\tCertKit Test\n\nSerial\t369e00900c670fab4b5d94c60be6c292d6093222\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tDNS:leaf.certkit.test\nDNS:www.leaf.certkit.test\nIP:203.0.113.10\nPublic key\tRSA 2048 bits"
+          "renderedSummary": "Summary\nFile size\t3608 bytes\nParse time\t85.7 ms (der 0 ms, bags 0.1 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":2}\nPrivate key\tRSA\nCertificates\t2\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1\nSubject\t\nCN\tleaf.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tinter.certkit.test\nO\tCertKit Test\n\nSerial\t369e00900c670fab4b5d94c60be6c292d6093222\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tDNS:leaf.certkit.test\nDNS:www.leaf.certkit.test\nIP:203.0.113.10\nPublic key\tRSA 2048 bits"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 90,
+      "wallMs": 86.3,
       "match": true,
       "pemKeyLen": 1702,
       "pemCertsLen": 2503,
@@ -287,7 +287,7 @@
           "ok": true,
           "error": null,
           "fileBytes": 4314,
-          "wallMs": 206.1,
+          "wallMs": 214.3,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -304,13 +304,13 @@
           "bundleLen": 5213,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t204.8 ms (der 0.1 ms, bags 0 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
+          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t213.5 ms (der 0 ms, bags 0.1 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
         },
         {
           "ok": true,
           "error": null,
           "fileBytes": 4314,
-          "wallMs": 211.7,
+          "wallMs": 220.7,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -327,13 +327,13 @@
           "bundleLen": 5213,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t210.9 ms (der 0.1 ms, bags 0.1 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
+          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t219.7 ms (der 0.1 ms, bags 0 ms, pem 0.5 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
         },
         {
           "ok": true,
           "error": null,
           "fileBytes": 4314,
-          "wallMs": 207.5,
+          "wallMs": 218.9,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -350,13 +350,13 @@
           "bundleLen": 5213,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t206.6 ms (der 0.1 ms, bags 0.1 ms, pem 0.8 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
+          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t218.6 ms (der 0 ms, bags 0.1 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
         },
         {
           "ok": true,
           "error": null,
           "fileBytes": 4314,
-          "wallMs": 213.8,
+          "wallMs": 228.8,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -373,13 +373,13 @@
           "bundleLen": 5213,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t212.9 ms (der 0.1 ms, bags 0 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
+          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t227.6 ms (der 0.1 ms, bags 0 ms, pem 0.6 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
         },
         {
           "ok": true,
           "error": null,
           "fileBytes": 4314,
-          "wallMs": 207.9,
+          "wallMs": 215,
           "certs": 1,
           "keyType": "RSA",
           "match": true,
@@ -396,12 +396,12 @@
           "bundleLen": 5213,
           "keyTextarea": true,
           "certTextareas": 1,
-          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t207 ms (der 0.1 ms, bags 0 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
+          "renderedSummary": "Summary\nFile size\t4314 bytes\nParse time\t214.1 ms (der 0.1 ms, bags 0 ms, pem 0.7 ms)\nBags\t{\"pkcs8ShroudedKeyBag\":1,\"keyBag\":0,\"certBag\":1}\nPrivate key\tRSA\nCertificates\t1\nKey ↔ cert match\tYES (modulus equal: true, sign/verify: true)\nCertificate #1 self-signed\nSubject\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nIssuer\t\nCN\tbig.certkit.test\nO\tCertKit Test\n\nSerial\t1f8a321c6e0a343e8dd0e53e6be79f4432f348b6\nValid\t2026-09-24T09:55:28.000Z → 2028-12-27T09:55:28.000Z\nSAN\tnone\nPublic key\tRSA 4096 bits\nSHA-256 fp\tE7:CD:E6:85:62:5E:AD:17:1B:CB:99:A9:3E:69:8E:A8:4B:C8:52:4C:3D:74:21:B4:A9:4C:8A:CC:4D:5C:D5:65\nRaw algorithm OIDs seen in file (informational)"
         }
       ],
       "ok": true,
       "error": null,
-      "wallMs": 207.9,
+      "wallMs": 215,
       "match": true,
       "pemKeyLen": 3294,
       "pemCertsLen": 1918,
@@ -496,28 +496,28 @@
   "perf4kb": {
     "fileBytes": 4314,
     "wallMs": [
-      252,
-      250,
-      226,
-      218,
-      229,
-      208,
-      225,
+      261,
+      233,
+      222,
       231,
-      230,
-      228
+      227,
+      219,
+      236,
+      228,
+      241,
+      231
     ],
     "parseOnlyMs": [
-      209.4,
-      196.9,
-      174.8,
-      177.3,
-      175.4,
-      168.5,
-      178.7,
-      178.4,
-      177.3,
-      190.9
+      217.9,
+      189.3,
+      181,
+      180.4,
+      176.1,
+      180.4,
+      184.3,
+      180.2,
+      189.3,
+      190.4
     ],
     "mem": {
       "usedJSHeapMB": 17.4,

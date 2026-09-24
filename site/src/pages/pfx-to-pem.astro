@@ -72,7 +72,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="out">
       <h3>Private key (PEM)</h3>
       <label class="visually-hidden" for="out-key">Private key in PEM format</label>
-      <textarea id="out-key" class="mono" readonly spellcheck="false"></textarea>
+      <textarea data-lenis-prevent id="out-key" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-key" data-copy-status="copy-status-key">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-key" data-filename="private-key.pem" data-mime="application/x-pem-file">Download .pem</button>
@@ -83,7 +83,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="out">
       <h3>Certificate chain (PEM)</h3>
       <label class="visually-hidden" for="out-certs">Certificates in PEM format</label>
-      <textarea id="out-certs" class="mono" readonly spellcheck="false"></textarea>
+      <textarea data-lenis-prevent id="out-certs" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-certs" data-copy-status="copy-status-certs">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-certs" data-filename="certificates.pem" data-mime="application/x-pem-file">Download .pem</button>
@@ -95,7 +95,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       <h3>Bundle — key + certificates</h3>
       <p class="small muted">Handy for servers that want the key and chain in one file.</p>
       <label class="visually-hidden" for="out-bundle">Private key and certificate bundle</label>
-      <textarea id="out-bundle" class="mono" readonly spellcheck="false"></textarea>
+      <textarea data-lenis-prevent id="out-bundle" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-bundle" data-copy-status="copy-status-bundle">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-bundle" data-filename="bundle.pem" data-mime="application/x-pem-file">Download .pem</button>

@@ -47,7 +47,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         or paste multiple PEM certificates
         <span class="hint">Any order. Files and pasted text are combined.</span>
       </label>
-      <textarea id="chain-input" class="mono" spellcheck="false" rows="10" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea data-lenis-prevent id="chain-input" class="mono" spellcheck="false" rows="10" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="chain-run">Order chain</button>
@@ -87,7 +87,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       <h3>Ordered bundle (PEM)</h3>
       <p class="small muted">The same certificates in leaf → root order — paste-ready for a server config.</p>
       <label class="visually-hidden" for="out-chain">Ordered certificate bundle</label>
-      <textarea id="out-chain" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea data-lenis-prevent id="out-chain" class="mono" readonly spellcheck="false" hidden></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-chain" data-copy-status="copy-status-chain">Copy bundle</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-chain" data-filename="chain-ordered.pem" data-mime="application/x-pem-file">Download .pem</button>

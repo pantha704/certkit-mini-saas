@@ -1,0 +1,8 @@
+CertKit — Cloudflare Web Analytics beacon (localcertkit.pages.dev).
+Source of truth: Cloudflare dashboard → Web Analytics → localcertkit.pages.dev.
+Verified against the RUM API (accounts/50643fc24133c4ec4224859e13d2a89c/rum/site_info/list):
+  site_token = 27834a9157f545d9b7a643908251582b  ← the beacon token used in the snippet below
+  site_tag   = 5f403b1086be493ebb491fc34f19cd3d  ← dashboard/site identifier, NOT a beacon token
+This exact snippet is loaded (is:inline) in site/src/layouts/Base.astro for every page.
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "27834a9157f545d9b7a643908251582b"}'></script><!-- End Cloudflare Web Analytics -->

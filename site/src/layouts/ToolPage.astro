@@ -58,7 +58,11 @@ const {
           {faq.map((item) => (
             <details>
               <summary>{item.q}</summary>
-              <p>{item.a}</p>
+              <div class="faq-body">
+                <div class="faq-body-inner">
+                  <p>{item.a}</p>
+                </div>
+              </div>
             </details>
           ))}
         </section>

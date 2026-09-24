@@ -41,7 +41,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     </div>
     <div class="field">
       <label class="visually-hidden" for="key-input">Private key PEM</label>
-      <textarea id="key-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
+      <textarea data-lenis-prevent id="key-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
     </div>
 
     <h2>Certificate</h2>
@@ -51,7 +51,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     </div>
     <div class="field">
       <label class="visually-hidden" for="cert-input">Certificate PEM or DER</label>
-      <textarea id="cert-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea data-lenis-prevent id="cert-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
 
     <div class="btn-row">
@@ -71,7 +71,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       <h3>Result report</h3>
       <p class="small muted">A text summary you can keep with the deployment notes.</p>
       <label class="visually-hidden" for="out-report">Match report text</label>
-      <textarea id="out-report" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea data-lenis-prevent id="out-report" class="mono" readonly spellcheck="false" hidden></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-report" data-copy-status="copy-status-report">Copy result</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-report" data-filename="key-cert-match.txt" data-mime="text/plain;charset=utf-8">Download .txt</button>
