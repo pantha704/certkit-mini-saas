@@ -4,7 +4,9 @@
 
 Static site (Astro) + a single vendored crypto/ASN.1 library (node-forge 1.4.0). No server,
 no uploads, no accounts, no personal tracking; one cookie-less Cloudflare Web Analytics beacon
-counts visits anonymously. RSA-first v1; EC/Ed25519 is on the roadmap.
+counts visits anonymously. Google AdSense application is pending: ads appear only after approval
+and only with consent where required, and the tools stay local either way. RSA-first v1;
+EC/Ed25519 is on the roadmap.
 
 Live: <https://localcertkit.pages.dev>
 

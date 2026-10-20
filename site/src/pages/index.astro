@@ -21,7 +21,11 @@ const faq = [
   },
   {
     q: 'Does it cost anything?',
-    a: 'No. CertKit is free, has no accounts, no ads and no personal tracking. There is a reserved slot for a future certificate-provider partner link, and it is currently unused, so no affiliate links are shown.',
+    a: 'No. CertKit is free, has no accounts and no personal tracking. We are applying to show Google AdSense ads on some pages, which would help keep it free; ads appear only after Google approves the site and only with consent where required. A reserved slot for a future certificate-provider partner link exists and is currently unused, so no affiliate links are shown.',
+  },
+  {
+    q: 'Are there ads on CertKit?',
+    a: 'Not yet. We are applying to show Google AdSense ads on some pages. They will only appear after Google approves the site, and only with consent where required. Ad scripts can set cookies after consent; the tools themselves still run locally and never upload your files. The full detail is in the privacy note.',
   },
   {
     q: 'Should I use this with production keys?',
@@ -67,7 +71,7 @@ const jsonLd = [
       <ul class="hero-badges">
         <li>No uploads</li>
         <li>No accounts</li>
-        <li>No ads, cookie-less counts</li>
+        <li>Cookie-less visit counts</li>
         <li>Free</li>
         <li>Works offline once loaded</li>
       </ul>
@@ -123,9 +127,14 @@ const jsonLd = [
       <div class="card feature-card">
         <ul>
           <li>
-            No ads. No tracking pixels. Anonymous, cookie-less visit counts via Cloudflare Web
-            Analytics: no personal data, no cross-site tracking, no fingerprinting. All file
-            processing stays local: every tool works fully offline once the page has loaded.
+            <strong>No ad code yet.</strong> We are applying to show Google AdSense ads on some
+            pages; they will only appear after Google approves the site, and only with consent where
+            required. Ad scripts can set cookies after consent; the tools themselves still run
+            locally and never upload your files. There are no tracking pixels. Visit counts are
+            anonymous and cookie-less via Cloudflare Web Analytics: no personal data, no cross-site
+            tracking, no fingerprinting. All file processing stays local: every tool works fully
+            offline once the page has loaded. Detail in the{' '}
+            <a href="/privacy/#advertising">privacy note</a>.
           </li>
           <li>No affiliate links (a certificate-provider partner slot exists in the config and is unused).</li>
           <li>No accounts, no email required, no rate limits, no paid tier.</li>

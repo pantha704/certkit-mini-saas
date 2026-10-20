@@ -6,7 +6,7 @@
     {
       "name": "decode cert from PEM",
       "ok": true,
-      "ms": 7.2,
+      "ms": 5.7,
       "cn": "leaf.certkit.test",
       "sans": 3,
       "sig": "sha256WithRSAEncryption"
@@ -14,7 +14,7 @@
     {
       "name": "decode cert from DER bytes",
       "ok": true,
-      "ms": 2.8,
+      "ms": 3.1,
       "cn": "leaf.certkit.test",
       "derBytes": 886
     },
@@ -33,7 +33,7 @@
     {
       "name": "decode CSR (SANs + signature verify)",
       "ok": true,
-      "ms": 5.4,
+      "ms": 6.2,
       "cn": "leaf.certkit.test",
       "sans": "DNS:leaf.certkit.test,DNS:www.leaf.certkit.test,IP:203.0.113.10",
       "sigValid": true
@@ -47,14 +47,14 @@
     {
       "name": "key matches own certificate",
       "ok": true,
-      "ms": 45.4,
+      "ms": 44.5,
       "match": true,
       "signVerify": true
     },
     {
       "name": "different key → NO match (negative control)",
       "ok": true,
-      "ms": 36.4,
+      "ms": 33.7,
       "match": false,
       "modulusEqual": false,
       "signVerify": null,
@@ -63,13 +63,13 @@
     {
       "name": "EC key → friendly EC_UNSUPPORTED",
       "ok": true,
-      "ms": 0.9,
+      "ms": 0.5,
       "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only. EC/Ed25519"
     },
     {
       "name": "chain order: shuffled root/leaf/inter → leaf,inter,root",
       "ok": true,
-      "ms": 6.3,
+      "ms": 5.3,
       "order": "leaf.certkit.test → inter.certkit.test → root.certkit.test",
       "links": 2,
       "sigValid": true
@@ -77,14 +77,14 @@
     {
       "name": "chain order: missing intermediate reported",
       "ok": true,
-      "ms": 6.7,
+      "ms": 1.7,
       "missing": "inter.certkit.test",
       "unlinked": "root.certkit.test"
     },
     {
       "name": "chain order: duplicates counted, chain still ordered",
       "ok": true,
-      "ms": 5.3,
+      "ms": 6,
       "duplicates": 1,
       "chain": 3
     },
@@ -97,26 +97,26 @@
     {
       "name": "JWK set inspect (RSA + EC members)",
       "ok": true,
-      "ms": 1,
+      "ms": 0.5,
       "kind": "JWK Set",
       "keys": "RSA+EC"
     },
     {
       "name": "private JWK → private-material warning",
       "ok": true,
-      "ms": 0.3,
+      "ms": 0.2,
       "warnings": 2
     },
     {
       "name": "invalid JWK JSON → clear error",
       "ok": true,
-      "ms": 0,
+      "ms": 0.1,
       "message": "Input is neither a JWK (object with \"kty\") nor a JWK set (object with a \"keys\" array)."
     },
     {
       "name": "pemToPfx produces a valid PKCS#12 (forge re-read)",
       "ok": true,
-      "ms": 116.7,
+      "ms": 117.1,
       "pfxBytes": 3462,
       "certBags": 2,
       "keyMatch": true
@@ -124,7 +124,7 @@
     {
       "name": "pemToPfx refuses mismatched key/cert",
       "ok": true,
-      "ms": 35.2,
+      "ms": 31.6,
       "message": "The private key does not match the first certificate. Refusing to build a broken"
     },
     {

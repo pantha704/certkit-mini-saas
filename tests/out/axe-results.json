@@ -1,6 +1,6 @@
 {
   "engine": "../../accessproof/engine (axe-core, WCAG 2.2 A/AA tags)",
-  "scannedAt": "2026-10-20T10:28:37.503Z",
+  "scannedAt": "2026-10-20T17:18:16.200Z",
   "baseUrl": "http://127.0.0.1:4400",
   "totalPages": 13,
   "cleanPages": 13,
@@ -241,5 +241,5 @@
       "enginePageError": null
     }
   ],
-  "rawReportsDir": "/tmp/certkit-axe-Mbql5C"
+  "rawReportsDir": "/tmp/certkit-axe-5MeVj4"
 }

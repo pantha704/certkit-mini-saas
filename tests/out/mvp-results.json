@@ -1,7 +1,7 @@
 {
   "engine": "chromium via playwright-core",
-  "baseUrl": "http://127.0.0.1:4612",
-  "builtAt": "2026-10-20T10:20:51.552Z",
+  "baseUrl": "http://127.0.0.1:4399",
+  "builtAt": "2026-10-20T17:15:39.224Z",
   "total": 18,
   "passed": 18,
   "failed": 0,
@@ -9,7 +9,7 @@
     {
       "name": "pfx-to-pem: modern AES-256 file → key + cert + match",
       "ok": true,
-      "ms": 1664,
+      "ms": 470,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -20,7 +20,7 @@
     {
       "name": "pfx-to-pem: wrong password → clear error",
       "ok": true,
-      "ms": 192,
+      "ms": 168,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -30,7 +30,7 @@
     {
       "name": "pfx-to-pem: EC file → friendly unsupported + roadmap link",
       "ok": true,
-      "ms": 217,
+      "ms": 194,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -40,7 +40,7 @@
     {
       "name": "pem-to-pfx: leaf key + chain → downloadable PFX, forge-verified",
       "ok": true,
-      "ms": 722,
+      "ms": 573,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -51,7 +51,7 @@
     {
       "name": "pem-to-pfx: mismatched key/cert → refused with hint",
       "ok": true,
-      "ms": 292,
+      "ms": 239,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -61,7 +61,7 @@
     {
       "name": "pem-to-pfx: EC key → friendly unsupported",
       "ok": true,
-      "ms": 186,
+      "ms": 145,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -71,7 +71,7 @@
     {
       "name": "certificate-decoder: PEM cert → subject/SANs/signature + raw JSON",
       "ok": true,
-      "ms": 451,
+      "ms": 453,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -82,7 +82,7 @@
     {
       "name": "certificate-decoder: garbage input → error, no crash",
       "ok": true,
-      "ms": 162,
+      "ms": 114,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -92,7 +92,7 @@
     {
       "name": "csr-decoder: leaf CSR → CN, SANs, signature verified",
       "ok": true,
-      "ms": 162,
+      "ms": 150,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -103,7 +103,7 @@
     {
       "name": "csr-decoder: garbage input → error",
       "ok": true,
-      "ms": 173,
+      "ms": 134,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -113,7 +113,7 @@
     {
       "name": "key-cert-match: real pair → MATCH",
       "ok": true,
-      "ms": 385,
+      "ms": 249,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -123,7 +123,7 @@
     {
       "name": "key-cert-match: different pair → NO MATCH",
       "ok": true,
-      "ms": 212,
+      "ms": 202,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -133,7 +133,7 @@
     {
       "name": "key-cert-match: garbage key → error",
       "ok": true,
-      "ms": 174,
+      "ms": 153,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -143,7 +143,7 @@
     {
       "name": "chain-order: shuffled root/leaf/inter → ordered leaf→root",
       "ok": true,
-      "ms": 215,
+      "ms": 179,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -155,7 +155,7 @@
     {
       "name": "chain-order: missing intermediate → reported + unlinked root",
       "ok": true,
-      "ms": 174,
+      "ms": 144,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -165,7 +165,7 @@
     {
       "name": "der-jwk-inspector: DER certificate file → summary",
       "ok": true,
-      "ms": 245,
+      "ms": 199,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -175,7 +175,7 @@
     {
       "name": "der-jwk-inspector: JWK set → 2 keys with kid/alg/use",
       "ok": true,
-      "ms": 185,
+      "ms": 161,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {
@@ -186,7 +186,7 @@
     {
       "name": "der-jwk-inspector: invalid JWK JSON → error",
       "ok": true,
-      "ms": 142,
+      "ms": 130,
       "consoleErrors": [],
       "pageErrors": [],
       "details": {

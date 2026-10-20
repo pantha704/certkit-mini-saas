@@ -10,7 +10,7 @@ const privacyLd = {
   name: 'Privacy: nothing leaves your browser',
   url: `${siteUrl}/privacy/`,
   description:
-    'CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts.',
+    'CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no accounts, anonymous cookie-less visit counts. Google AdSense ads are planned but not live yet.',
   publisher: {
     '@type': 'Organization',
     name: 'LocalCertKit',
@@ -21,7 +21,7 @@ const privacyLd = {
 
 <Base
   title="Privacy: nothing leaves your browser"
-  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts."
+  description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no accounts, anonymous cookie-less visit counts. Google AdSense ads are planned but not live yet."
   jsonLd={[privacyLd]}
 >
   <div class="wrap tool-wrap">
@@ -34,7 +34,7 @@ const privacyLd = {
 
     <header class="tool-head">
       <h1>Privacy</h1>
-      <p class="lead">The short version: your files never leave your browser, and there is nothing to collect.</p>
+      <p class="lead">The short version: your files never leave your browser, and there are no accounts, no profiles and no uploads. The one thing that will change is advertising: Google AdSense is planned for some pages, and the rules for it are set out below.</p>
     </header>
 
     <section class="card">
@@ -47,10 +47,11 @@ const privacyLd = {
       <h2>What this site does not do</h2>
       <ul>
         <li>No file, key, password or certificate is transmitted anywhere.</li>
-        <li>No cookies, no localStorage, no fingerprinting, no session recording.</li>
+        <li>No first-party cookies, no localStorage, no fingerprinting, no session recording.</li>
         <li>
-          No tracking pixels, no ad networks, no social embeds. Visit counts are anonymous and
-          cookie-less. Read the <a href="#visit-counts">Visit counts</a> section below.
+          No ad code today and no tracking pixels, no social embeds. Visit counts are anonymous and
+          cookie-less. Read the <a href="#visit-counts">Visit counts</a> and{' '}
+          <a href="#advertising">Advertising</a> sections below.
         </li>
         <li>No accounts, no email collection, no newsletter.</li>
       </ul>
@@ -66,25 +67,67 @@ const privacyLd = {
       <h2 id="visit-counts">Visit counts</h2>
       <p>
         The site loads one small third-party script: Cloudflare Web Analytics
-        (<span class="mono">static.cloudflareinsights.com</span>). It is the only request the page
-        makes to a host other than this one, and it does one thing: records that a page was opened.
-        It sets no cookies, stores nothing on your device, does not fingerprint you and does not
-        follow you across other sites. The aggregate report shows which page was viewed, the
-        referring site, the country and the browser family; never an individual visitor, and never
-        anything about the files you open in a tool.
+        (<span class="mono">static.cloudflareinsights.com</span>). Until ads are approved, it is the
+        only request the page makes to a host other than this one, and it does one thing: records
+        that a page was opened. It sets no cookies, stores nothing on your device, does not
+        fingerprint you and does not follow you across other sites. The aggregate report shows which
+        page was viewed, the referring site, the country and the browser family; never an individual
+        visitor, and never anything about the files you open in a tool.
       </p>
       <p>
         This is a visit counter, not surveillance. Cloudflare processes these aggregate counts under
         its own privacy policy (linked above). The tools themselves still make no network calls at
         all.
       </p>
+      <h2 id="advertising">Advertising (AdSense)</h2>
+      <p>
+        No ads appear on CertKit today. We are applying to show Google AdSense ads on some pages.
+        They will only appear after Google approves the site, and only with consent where required.
+        Ad scripts can set cookies after consent; the tools themselves still run locally and never
+        upload your files.
+      </p>
+      <ul>
+        <li>
+          <strong>After approval only.</strong> No AdSense script is loaded until Google approves the
+          site. There is no ad slot, no placeholder and no hidden ad code on any page right now.
+        </li>
+        <li>
+          <strong>Consent first where required.</strong> In regions that require it, ad and consent
+          scripts load only after you agree. The tools do not depend on ad scripts, so blocking or
+          declining ads does not disable them.
+        </li>
+        <li>
+          <strong>Cookies and third-party data.</strong> After consent, Google and its partners may
+          set cookies or read device identifiers to serve and measure ads. That can include
+          approximate location and ad-interaction data. It is Google’s processing, not ours, and it
+          never touches the files you open in a tool. See{' '}
+          <a href="https://policies.google.com/technologies/ads" rel="noopener">Google’s advertising policies</a>
+          and <a href="https://policies.google.com/privacy" rel="noopener">Google’s privacy policy</a>.
+        </li>
+        <li>
+          <strong>The tools stay local.</strong> Ads sit beside the tools. Certificate, key, CSR and
+          password contents never go to Google or anyone else: processing still happens in your
+          browser tab.
+        </li>
+        <li>
+          <strong>Opting out.</strong> You can limit ad personalisation at{' '}
+          <a href="https://adssettings.google.com/" rel="noopener">Google Ad Settings</a> or with your
+          browser’s tracking controls. Blocking ads does not break any tool.
+        </li>
+      </ul>
+      <p>
+        If the application is rejected, or this changes, this section will be updated before anything
+        ships.
+      </p>
       <h2>Verifying the claims</h2>
       <p>
         Open DevTools → Network, clear the log, then run any tool: you will see no request appear
         while your file is processed. The one exception is the “Load sample” button, which fetches
-        that test file from this site (again, nothing of yours is involved). The only third-party entry is the analytics beacon loaded
-        with the page. Disconnect your network after a page loads and the tools keep working. That is the
-        strongest possible proof that processing is local.
+        that test file from this site (again, nothing of yours is involved). The only third-party
+        entry today is the analytics beacon loaded with the page; once AdSense is approved and
+        consented to, Google’s ad script will appear there too. Disconnect your network after a page
+        loads and the tools keep working. That is the strongest possible proof that processing is
+        local.
       </p>
       <h2>Contact</h2>
       <p>
@@ -95,7 +138,7 @@ const privacyLd = {
         <a href="https://github.com/pantha704/certkit-mini-saas">github.com/pantha704/certkit-mini-saas</a>,
         open an issue if anything looks wrong.
       </p>
-      <p class="small muted">Last updated: 25 September 2026.</p>
+      <p class="small muted">Last updated: 20 October 2026.</p>
     </section>
   </div>
 </Base>
