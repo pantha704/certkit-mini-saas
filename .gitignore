@@ -12,3 +12,5 @@ site/dist/
 site/.astro/
 site/public/vendor/
 site/public/lib/
+
+.claude/
