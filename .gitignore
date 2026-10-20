@@ -5,6 +5,7 @@ bun.lockb
 !site/bun.lock
 tests/out/*.p12
 tests/out/*.pem
+tests/out/*.json
 
 # Generated site artifacts (sync script + astro)
 site/node_modules/
