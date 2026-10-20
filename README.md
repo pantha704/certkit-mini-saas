@@ -30,7 +30,7 @@ More: [`docs/screenshots/`](docs/screenshots/).
 | `/chain-order/` | Orders certs leaf → intermediate → root, verifies issuer links, reports missing issuers |
 | `/der-jwk-inspector/` | DER certificate inspection + JWK / JWK-set parsing (no verification claims) |
 
-Plus `/privacy/`, `/about/`, `/contact/`, `/roadmap/` and a styled 404.
+Plus `/privacy/`, `/about/`, `/contact/`, `/roadmap/`, `/faq/` and a styled 404.
 
 ## Repo layout
 
@@ -83,7 +83,7 @@ bun run test:axe      # accessproof engine, WCAG 2.2 A/AA, every page (tests/out
 bun run fixtures      # regenerate fixtures (needs OpenSSL 3.x)
 ```
 
-Current status: `test:lib` 19/19, `test:mvp` 18/18, `test:axe` 13/13 pages with **0 axe
+Current status: `test:lib` 19/19, `test:mvp` 18/18, `test:axe` 14/14 pages with **0 axe
 violations**. Evidence files live in `tests/out/`.
 
 Weight: the homepage ships under 1 KB of JS (gzip, motion only). Tool pages ship about 3.4 KB

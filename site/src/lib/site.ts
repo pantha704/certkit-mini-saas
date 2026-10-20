@@ -64,6 +64,7 @@ export const NAV = [
   { href: '/', label: 'Home' },
   { href: '/#tools', label: 'Tools' },
   { href: '/roadmap/', label: 'Roadmap' },
+  { href: '/faq/', label: 'FAQ' },
   { href: '/privacy/', label: 'Privacy' },
   { href: '/about/', label: 'About' },
   { href: '/contact/', label: 'Contact' },

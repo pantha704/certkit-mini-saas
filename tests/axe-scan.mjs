@@ -44,6 +44,7 @@ const PAGES = [
   { path: '/about/', slug: 'about' },
   { path: '/contact/', slug: 'contact' },
   { path: '/roadmap/', slug: 'roadmap' },
+  { path: '/faq/', slug: 'faq' },
   { path: '/this-page-does-not-exist/', slug: '404' },
 ];
 

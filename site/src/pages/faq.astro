@@ -1,0 +1,203 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+
+const siteUrl = SITE.url.replace(/\/$/, '');
+
+type Segment = string | { text: string; href: string };
+
+interface FaqItem {
+  q: string;
+  a: Segment[];
+}
+
+const faq: FaqItem[] = [
+  {
+    q: 'What is CertKit?',
+    a: [
+      'CertKit is a set of browser-local certificate and key tools for the routine jobs that usually end with a file on someone else’s server: PFX conversion, certificate and CSR decoding, key matching and chain ordering. ',
+      'Every tool is a static page that processes your file in the browser tab, with no server in the tool flow. ',
+      'v1 is RSA-first; EC and Ed25519 objects are reported as unsupported rather than mishandled, and support is first on the ',
+      { text: 'roadmap', href: '/roadmap/' },
+      '.',
+    ],
+  },
+  {
+    q: 'Which tools are available?',
+    a: [
+      'There are seven: ',
+      { text: 'PFX to PEM', href: '/pfx-to-pem/' },
+      ', ',
+      { text: 'PEM to PFX', href: '/pem-to-pfx/' },
+      ', ',
+      { text: 'certificate decoder', href: '/certificate-decoder/' },
+      ', ',
+      { text: 'CSR decoder', href: '/csr-decoder/' },
+      ', ',
+      { text: 'key and certificate match', href: '/key-cert-match/' },
+      ', ',
+      { text: 'chain order', href: '/chain-order/' },
+      ' and the ',
+      { text: 'DER and JWK inspector', href: '/der-jwk-inspector/' },
+      '. Each is a separate page, and all seven run locally in your browser.',
+    ],
+  },
+  {
+    q: 'Do my keys or certificates leave my browser?',
+    a: [
+      'No. Files are read with the browser File API and processed by JavaScript served from this domain, so there is no upload step, no API call and no server-side processing. ',
+      'The one exception is the “Load sample” button, which fetches a throwaway test file from this site and never touches your file. ',
+      'Open DevTools, clear the Network log, run a tool and you will see no request that carries your data.',
+    ],
+  },
+  {
+    q: 'Why are there no accounts?',
+    a: [
+      'There is nothing to log in to: no profiles, no saved history, no email collection, no newsletter and no server-side data tied to a visitor. ',
+      'The tools are static pages, so there is no session to keep and nothing to attach an account to. ',
+      'Visit counts are anonymous and cookie-less, and the plan is to keep the site free with ads on some pages rather than accounts or a paid tier.',
+    ],
+  },
+  {
+    q: 'Does CertKit work offline?',
+    a: [
+      'Yes, once a page has loaded. ',
+      'The site is static HTML, CSS and JavaScript, and the tool library plus node-forge are served from this domain rather than a CDN, so no network call is needed to process a file. ',
+      'After loading a page you can disconnect the network and the tools keep working; only the “Load sample” button needs a connection, because it fetches its test file from the site.',
+    ],
+  },
+  {
+    q: 'Which browsers are supported?',
+    a: [
+      'CertKit is tested in Chromium, which is the browser the automated suite runs in. ',
+      'It uses standard browser APIs (the File API, FileReader and normal DOM scripting) with no plugin and no install. ',
+      'Firefox, Safari and Edge should work, but they are not yet in the automated test matrix, so treat them as untested rather than guaranteed.',
+    ],
+  },
+  {
+    q: 'What is the difference between PFX and PEM?',
+    a: [
+      'A PFX, also called PKCS#12 or .p12, is one binary container that can hold a private key, its certificates and a password. ',
+      'PEM is text: base64 blocks with BEGIN and END headers, one object per block, and it is the format nginx, Apache and most environment variables expect. ',
+      'CertKit converts both ways: ',
+      { text: 'PFX to PEM', href: '/pfx-to-pem/' },
+      ' extracts the key and chain, and ',
+      { text: 'PEM to PFX', href: '/pem-to-pfx/' },
+      ' builds a password-protected container. ',
+      'The writer uses an HMAC-SHA-1 MAC and stores certificate bags unencrypted, which the tool page states before you use it, so keep your PEM files as the source of truth.',
+    ],
+  },
+  {
+    q: 'What does “chain order” mean?',
+    a: [
+      'A TLS chain runs from the leaf certificate for your domain, through intermediates, to a root. ',
+      'Servers must send the leaf and the intermediates in that order, and a chain that is out of order or missing an intermediate fails on some clients. ',
+      'The ',
+      { text: 'chain order tool', href: '/chain-order/' },
+      ' matches each certificate’s issuer to another certificate’s subject, verifies each issuer signature and names any missing issuer. ',
+      'It is a consistency check for building the chain, not a trust validation: it does not check revocation, hostnames or policy.',
+    ],
+  },
+  {
+    q: 'Are the results auditable?',
+    a: [
+      'Yes, within the limits of a small project. ',
+      'The source is public under the MIT license, and the same parsing code is exercised by a Node test suite and a real-browser Playwright suite against fixtures generated with OpenSSL. ',
+      'Built-in sample files let you reproduce a run, and DevTools shows that no request carries your data. ',
+      'That is auditability, not a formal security audit or a certificate authority’s validation.',
+    ],
+  },
+  {
+    q: 'Are there ads, and does CertKit cost anything?',
+    a: [
+      'CertKit is free: no accounts, no email, no rate limits and no paid tier. ',
+      'No ads appear on CertKit today; we are applying to show Google AdSense ads on some pages, and they will only appear after Google approves the site and only with consent where required. ',
+      'Ad scripts can set cookies after consent, but the tools themselves still run locally and never upload your files.',
+    ],
+  },
+];
+
+const plain = (segments: Segment[]): string =>
+  segments.map((s) => (typeof s === 'string' ? s : s.text)).join('');
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  name: 'CertKit FAQ',
+  url: `${siteUrl}/faq/`,
+  description:
+    'Short answers about CertKit: the seven browser-local tools, local processing, offline use, browser support, PFX vs PEM, chain order, auditing, ads and pricing.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'LocalCertKit',
+    url: `${siteUrl}/`,
+  },
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: plain(item.a),
+    },
+  })),
+};
+---
+
+<Base
+  title="CertKit FAQ: local processing, formats and limits"
+  description="CertKit FAQ: the seven browser-local tools, where files are processed, offline use, browser support, PFX vs PEM, chain order, auditing, ads and pricing."
+  jsonLd={[faqLd]}
+>
+  <div class="wrap tool-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">FAQ</li>
+      </ol>
+    </nav>
+
+    <header class="tool-head">
+      <h1>Frequently asked questions</h1>
+      <p class="lead">
+        Short answers about what CertKit is, how the local processing works, and what v1 does not
+        do. Each answer points at the page or test that backs it.
+      </p>
+    </header>
+
+    <section class="faq-section" aria-labelledby="faq-heading" data-reveal>
+      <h2 id="faq-heading" class="visually-hidden">Questions</h2>
+      {
+        faq.map((item) => (
+          <details data-reveal-item>
+            <summary>{item.q}</summary>
+            <div class="faq-body">
+              <div class="faq-body-inner">
+                <p>
+                  {item.a.map((segment) =>
+                    typeof segment === 'string' ? (
+                      segment
+                    ) : (
+                      <a href={segment.href}>{segment.text}</a>
+                    )
+                  )}
+                </p>
+              </div>
+            </div>
+          </details>
+        ))
+      }
+    </section>
+
+    <section class="card" data-reveal>
+      <h2>Still have a question?</h2>
+      <p>
+        The <a href="/privacy/">privacy note</a> has the full local-processing and advertising
+        detail, the <a href="/roadmap/">roadmap</a> lists what is planned, and the{' '}
+        <a href="/about/">about page</a> explains why CertKit exists. For a bug or a wrong claim, use
+        the <a href="/contact/">contact page</a> or open an issue in the{' '}
+        <a href="https://github.com/pantha704/certkit-mini-saas">source repository</a>.
+      </p>
+      <p class="small muted">Last updated: 20 October 2026.</p>
+    </section>
+  </div>
+</Base>
