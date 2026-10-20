@@ -20,7 +20,7 @@ Live: <https://localcertkit.pages.dev>
 | `/chain-order/` | Orders certs leaf → intermediate → root, verifies issuer links, reports missing issuers |
 | `/der-jwk-inspector/` | DER certificate inspection + JWK / JWK-set parsing (no verification claims) |
 
-Plus `/privacy/`, `/about/`, `/roadmap/` and a styled 404.
+Plus `/privacy/`, `/about/`, `/contact/`, `/roadmap/` and a styled 404.
 
 ## Repo layout
 
@@ -29,10 +29,13 @@ lib/certkit.js            # the whole client library (UMD): parse/decode/order/m
 vendor/forge.min.js       # node-forge 1.4.0, vendored (pinned; 1.3.x does NOT read AES PKCS#12)
 site/                     # Astro static site (see below)
   src/pages/              # one file per page; src/layouts/ToolPage.astro is the tool shell
+  public/js/boot.js       # lazy engine loader: forge + tools load on first interaction
+  public/js/samples.js    # "Load sample" action shared by every tool
   public/js/ui.js         # shared browser UI helpers (dropzones, copy/download, errors)
   public/js/tools/*.js    # per-tool client scripts
-  public/robots.txt, og.png, favicon.svg
-  assets/og.svg           # source of public/og.png (rendered with ImageMagick)
+  public/robots.txt, og.png, favicon.svg, favicon.ico
+  public/samples/         # built-in test key, cert, chain, CSR, JWK (public, throwaway)
+  assets/og.svg           # source of public/og.png (rendered in Chromium at 1200x630)
 scripts/sync-site-lib.mjs # copies lib+forge into site/public before dev/build (single source)
 scripts/make-fixtures.sh  # regenerates all throwaway test fixtures with OpenSSL 3.x
 scripts/make-jwk-fixtures.mjs
@@ -70,8 +73,13 @@ bun run test:axe      # accessproof engine, WCAG 2.2 A/AA, every page (tests/out
 bun run fixtures      # regenerate fixtures (needs OpenSSL 3.x)
 ```
 
-Current status: `test:lib` 19/19, `test:mvp` 18/18, `test:axe` 12/12 pages with **0 axe
+Current status: `test:lib` 19/19, `test:mvp` 18/18, `test:axe` 13/13 pages with **0 axe
 violations**. Evidence files live in `tests/out/`.
+
+Weight: the homepage ships under 1 KB of JS (gzip, motion only). Tool pages ship about 3.4 KB
+up front (boot + samples); node-forge (~73 KB gzip) loads on first interaction, so a tool page is
+~91 KB gzip even once the engine is running, under the 100 KB DoD budget. Scroll is native: Lenis
+and GSAP were removed in v1.1 (DoD §2 bans scroll-jacking, and both were pure weight here).
 
 ## Deploy
 

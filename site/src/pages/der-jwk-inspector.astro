@@ -1,12 +1,13 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="DER Certificate & JWK Inspector — local"
+  title="DER Certificate & JWK Inspector: local"
   description="Inspect a DER certificate or parse JWK / JWK-set JSON: key type, kid, alg, use, curve and size, plus private-material warnings. Runs in your browser, no upload."
   h1="DER &amp; JWK inspector"
-  lead="Two inspectors in one page: a DER certificate reader, and a JWK / JWK-set parser that shows kid, alg, use and key parameters — with no verification claims."
+  lead="Two inspectors in one page: a DER certificate reader, and a JWK / JWK-set parser that shows kid, alg, use and key parameters, with no verification claims."
   path="/der-jwk-inspector/"
   toolScript="/js/tools/der-jwk-inspector.js"
   jsonLdName="DER certificate and JWK inspector"
@@ -18,11 +19,11 @@ import ToolPage from '../layouts/ToolPage.astro';
     },
     {
       q: 'What does the JWK warning about “d” mean?',
-      a: 'A JWK field "d" is private key material. CertKit cannot undo that exposure — if you pasted a real private JWK anywhere, treat that key as compromised and rotate it.',
+      a: 'A JWK field "d" is private key material. CertKit cannot undo that exposure. If you pasted a real private JWK anywhere, treat that key as compromised and rotate it.',
     },
     {
       q: 'Can I inspect EC JWKs even though the X.509 tools are RSA-only?',
-      a: 'Yes. JWK parsing is pure JSON, so EC, RSA and symmetric JWKs are all described. X.509/PKCS#12 handling is RSA-first in v1 — EC support is on the roadmap.',
+      a: 'Yes. JWK parsing is pure JSON, so EC, RSA and symmetric JWKs are all described. X.509/PKCS#12 handling is RSA-first in v1. EC support is on the roadmap.',
     },
     {
       q: 'Is my file uploaded?',
@@ -35,7 +36,7 @@ import ToolPage from '../layouts/ToolPage.astro';
 
   <section class="card" aria-labelledby="der-heading">
     <h2 id="der-heading">DER certificate inspector</h2>
-    <p class="card-sub">Read a raw DER certificate (.der / .cer) — the same decoder as the certificate tool, in compact form.</p>
+    <p class="card-sub">Read a raw DER certificate (.der / .cer), the same decoder as the certificate tool, in compact form.</p>
 
     <form id="der-form" novalidate>
       <div class="file-drop" data-dropzone>
@@ -44,10 +45,11 @@ import ToolPage from '../layouts/ToolPage.astro';
       </div>
       <div class="field">
         <label for="der-input">or paste base64 DER / PEM</label>
-        <textarea data-lenis-prevent id="der-input" class="mono" spellcheck="false" rows="5" placeholder="MIID... (base64)" ></textarea>
+        <textarea id="der-input" class="mono" spellcheck="false" rows="5" placeholder="MIID... (base64)" ></textarea>
       </div>
       <div class="btn-row">
         <button type="submit" class="btn" id="der-run">Inspect certificate</button>
+        <SampleButton kind="der-certificate" label="Load sample certificate" />
       </div>
     </form>
 
@@ -59,7 +61,7 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-der"></span>
       </div>
       <label class="visually-hidden" for="out-der-pem">Certificate PEM</label>
-      <textarea data-lenis-prevent id="out-der-pem" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-der-pem" class="mono" readonly spellcheck="false" hidden></textarea>
       <p class="small muted">
         Need the full view? <a href="/certificate-decoder/">Open it in the certificate decoder</a>
         (with the raw ASN.1 JSON and extension list).
@@ -69,19 +71,20 @@ import ToolPage from '../layouts/ToolPage.astro';
 
   <section class="card" aria-labelledby="jwk-heading">
     <h2 id="jwk-heading">JWK / JWK-set inspector</h2>
-    <p class="card-sub">Paste a single JWK or a <span class="mono">&#123; "keys": [ … ] &#125;</span> set. Parsed and described — not verified.</p>
+    <p class="card-sub">Paste a single JWK or a <span class="mono">&#123; "keys": [ … ] &#125;</span> set. Parsed and described, not verified.</p>
 
     <form id="jwk-form" novalidate>
       <div class="file-drop" data-dropzone>
-        <label class="field-label" for="jwk-file">JWK file <span class="hint">.json — drag &amp; drop, or choose</span></label>
+        <label class="field-label" for="jwk-file">JWK file <span class="hint">.json. Drag &amp; drop, or choose</span></label>
         <input type="file" id="jwk-file" accept=".json,.txt" />
       </div>
       <div class="field">
         <label for="jwk-input">or paste JWK / JWK-set JSON</label>
-        <textarea data-lenis-prevent id="jwk-input" class="mono" spellcheck="false" rows="7" placeholder="paste JSON: &#123; &quot;kty&quot;: &quot;RSA&quot;, &quot;kid&quot;: &quot;…&quot; &#125;"></textarea>
+        <textarea id="jwk-input" class="mono" spellcheck="false" rows="7" placeholder="paste JSON: &#123; &quot;kty&quot;: &quot;RSA&quot;, &quot;kid&quot;: &quot;…&quot; &#125;"></textarea>
       </div>
       <div class="btn-row">
         <button type="submit" class="btn" id="jwk-run">Inspect JWK</button>
+        <SampleButton kind="jwk" label="Load sample JWK" />
       </div>
     </form>
 
@@ -109,9 +112,9 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-jwk"></span>
       </div>
       <label class="visually-hidden" for="out-jwk-json">JWK inspection report as JSON</label>
-      <textarea data-lenis-prevent id="out-jwk-json" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-jwk-json" class="mono" readonly spellcheck="false" hidden></textarea>
       <p class="small muted">
-        Parsed for inspection only — <strong>no signature verification or key validation is performed</strong>.
+        Parsed for inspection only. <strong>No signature verification or key validation is performed</strong>.
         To check a key against a certificate, use the <a href="/key-cert-match/">match checker</a> (RSA).
       </p>
     </div>

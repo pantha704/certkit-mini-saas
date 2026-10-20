@@ -46,7 +46,7 @@ const {
     <header class="tool-head">
       <h1>{h1}</h1>
       <p class="lead">{lead}</p>
-      <p class="local-badge">Runs locally in your browser — nothing is uploaded</p>
+      <p class="local-badge">Runs locally in your browser. Nothing is uploaded</p>
     </header>
 
     <slot />
@@ -73,9 +73,9 @@ const {
       <h2 id="how-local">How this runs locally</h2>
       <p>
         CertKit is a static site. Parsing and cryptography run inside this browser tab using a
-        vendored copy of <span class="mono">node-forge 1.4.0</span> served from this domain. Open
-        DevTools → Network, run the tool, and you will see no request that contains your file —
-        nothing is uploaded, and nothing is stored.
+        vendored copy of <span class="mono">node-forge 1.4.0</span>, served from this domain and
+        fetched on your first click, not up front. Open DevTools → Network, run the tool, and you
+        will see no request that contains your file. Nothing is uploaded, and nothing is stored.
       </p>
       <p class="small muted">
         <a href="/privacy/">Read the full privacy note</a> · <a href="/roadmap/">Roadmap</a> ·
@@ -85,7 +85,5 @@ const {
   </div>
 </Base>
 
-<script is:inline src="/vendor/forge.min.js" defer></script>
-<script is:inline src="/lib/certkit.js" defer></script>
-<script is:inline src="/js/ui.js" defer></script>
-<script is:inline src={toolScript} defer></script>
+<script is:inline src="/js/boot.js" data-tool={toolScript} defer></script>
+<script is:inline src="/js/samples.js" defer></script>

@@ -42,6 +42,7 @@ const PAGES = [
   { path: '/der-jwk-inspector/', slug: 'der-jwk-inspector' },
   { path: '/privacy/', slug: 'privacy' },
   { path: '/about/', slug: 'about' },
+  { path: '/contact/', slug: 'contact' },
   { path: '/roadmap/', slug: 'roadmap' },
   { path: '/this-page-does-not-exist/', slug: '404' },
 ];

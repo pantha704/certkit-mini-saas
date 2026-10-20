@@ -1,12 +1,13 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="PFX to PEM Converter — local, nothing uploaded"
+  title="PFX to PEM Converter: local, nothing uploaded"
   description="Convert PFX / P12 to PEM: extract the private key and certificate chain from a .pfx or .p12 file locally. Free, no upload. AES-256 and legacy files supported."
   h1="PFX to PEM"
-  lead="Extract the private key and certificate chain from a .pfx / .p12 file. The file is read in this browser tab — it is never sent anywhere."
+  lead="Extract the private key and certificate chain from a .pfx / .p12 file. The file is read in this browser tab, and it is never sent anywhere."
   path="/pfx-to-pem/"
   toolScript="/js/tools/pfx-to-pem.js"
   jsonLdName="PFX to PEM converter"
@@ -21,12 +22,12 @@ import ToolPage from '../layouts/ToolPage.astro';
       a: 'Modern files (PBES2: AES-256-CBC + PBKDF2 + SHA-256 MAC) and legacy files (3DES, RC2-40, SHA-1 MAC, files without a MAC) are all supported. Passwordless files work with an empty password.',
     },
     {
-      q: 'It says my file is unsupported — why?',
+      q: 'It says my file is unsupported. Why?',
       a: 'CertKit v1 is RSA-only. Files containing EC or Ed25519 keys or certificates fail with a clear message; EC support is planned on the roadmap. Encrypted files with a wrong password fail the integrity check and report a wrong-password error.',
     },
     {
       q: 'What exactly comes out of a conversion?',
-      a: 'The RSA private key as a PKCS#1 PEM block, every certificate in the file as PEM blocks (original order kept), and a combined bundle with the key first — ready for nginx, Apache or an environment variable.',
+      a: 'The RSA private key as a PKCS#1 PEM block, every certificate in the file as PEM blocks (original order kept), and a combined bundle with the key first, ready for nginx, Apache or an environment variable.',
     },
   ]}
 >
@@ -38,7 +39,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="file-drop" data-dropzone>
       <label class="field-label" for="pfx-file">
         PKCS#12 file
-        <span class="hint">.pfx or .p12 — drag &amp; drop it here, or choose a file</span>
+        <span class="hint">.pfx or .p12. Drag &amp; drop it here, or choose a file</span>
       </label>
       <input
         type="file"
@@ -55,10 +56,11 @@ import ToolPage from '../layouts/ToolPage.astro';
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="pfx-run">Convert to PEM</button>
+      <SampleButton kind="pfx-to-pem" />
     </div>
     <p class="small muted">
-      RSA-first v1: files with EC / Ed25519 keys are not supported yet —
-      <a href="/roadmap/">see the roadmap</a>.
+      RSA-first v1: files with EC / Ed25519 keys are not supported yet.{' '}
+      <a href="/roadmap/">See the roadmap</a>.
     </p>
   </form>
 
@@ -72,7 +74,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="out">
       <h3>Private key (PEM)</h3>
       <label class="visually-hidden" for="out-key">Private key in PEM format</label>
-      <textarea data-lenis-prevent id="out-key" class="mono" readonly spellcheck="false"></textarea>
+      <textarea id="out-key" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-key" data-copy-status="copy-status-key">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-key" data-filename="private-key.pem" data-mime="application/x-pem-file">Download .pem</button>
@@ -83,7 +85,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="out">
       <h3>Certificate chain (PEM)</h3>
       <label class="visually-hidden" for="out-certs">Certificates in PEM format</label>
-      <textarea data-lenis-prevent id="out-certs" class="mono" readonly spellcheck="false"></textarea>
+      <textarea id="out-certs" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-certs" data-copy-status="copy-status-certs">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-certs" data-filename="certificates.pem" data-mime="application/x-pem-file">Download .pem</button>
@@ -92,10 +94,10 @@ import ToolPage from '../layouts/ToolPage.astro';
     </div>
 
     <div class="out">
-      <h3>Bundle — key + certificates</h3>
+      <h3>Bundle: key + certificates</h3>
       <p class="small muted">Handy for servers that want the key and chain in one file.</p>
       <label class="visually-hidden" for="out-bundle">Private key and certificate bundle</label>
-      <textarea data-lenis-prevent id="out-bundle" class="mono" readonly spellcheck="false"></textarea>
+      <textarea id="out-bundle" class="mono" readonly spellcheck="false"></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-bundle" data-copy-status="copy-status-bundle">Copy</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-bundle" data-filename="bundle.pem" data-mime="application/x-pem-file">Download .pem</button>

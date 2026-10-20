@@ -7,7 +7,7 @@ const siteUrl = SITE.url.replace(/\/$/, '');
 const roadmapLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Roadmap — EC support first',
+  name: 'Roadmap: EC support first',
   url: `${siteUrl}/roadmap/`,
   description:
     'CertKit roadmap: EC/Ed25519 support, batch mode, offline packaging, CLI and improved PKCS#12 write options. See what shipped in v1 and what comes next.',
@@ -25,7 +25,7 @@ const planned = [
   },
   {
     title: 'Batch mode',
-    body: 'Convert or decode many files in one session with per-file results — still without uploading anything.',
+    body: 'Convert or decode many files in one session with per-file results, still without uploading anything.',
   },
   {
     title: 'Offline / desktop packaging',
@@ -33,7 +33,7 @@ const planned = [
   },
   {
     title: 'CLI or scripted use',
-    body: 'A command-line version of the same parsing core for automation — after the browser tools are complete.',
+    body: 'A command-line version of the same parsing core for automation, after the browser tools are complete.',
   },
   {
     title: 'More PKCS#12 write options',
@@ -53,7 +53,7 @@ const shipped = [
 ---
 
 <Base
-  title="Roadmap — EC support first"
+  title="Roadmap: EC support first"
   description="CertKit roadmap: EC/Ed25519 support, batch mode, offline packaging, CLI and improved PKCS#12 write options. See what shipped in v1 and what comes next."
   jsonLd={[roadmapLd]}
 >
@@ -71,7 +71,7 @@ const shipped = [
     </header>
 
     <section class="card" data-reveal>
-      <h2>Shipped — v1.0</h2>
+      <h2>Shipped: v1.0</h2>
       <ul>
         {shipped.map((item) => (
           <li>{item}</li>
@@ -81,7 +81,7 @@ const shipped = [
     </section>
 
     <section class="card" data-reveal>
-      <h2>Planned — in rough order</h2>
+      <h2>Planned: in rough order</h2>
       {planned.map((item) => (
         <div>
           <h3>{item.title}</h3>
@@ -97,7 +97,7 @@ const shipped = [
     <section class="card" data-reveal>
       <h2>Not planned</h2>
       <ul>
-        <li>Uploading or server-side processing of keys — that would defeat the point.</li>
+        <li>Uploading or server-side processing of keys. That would defeat the point.</li>
         <li>Accounts, subscriptions, ads or tracking.</li>
         <li>Claiming to be a certificate authority, a validator of trust chains, or a security audit.</li>
       </ul>

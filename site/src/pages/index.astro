@@ -9,7 +9,7 @@ const faq = [
   },
   {
     q: 'How can I verify that myself?',
-    a: 'Open DevTools → Network, load any tool and run your file. You will see only the page assets (HTML, CSS, JS, favicon) — no request ever carries your file or password. You can also disconnect from the internet after the page loads: the tools keep working.',
+    a: 'Open DevTools → Network, load any tool and run your file. You will see only the page assets (HTML, CSS, JS, favicon). No request ever carries your file or password. You can also disconnect from the internet after the page loads: the tools keep working.',
   },
   {
     q: 'Why is EC support missing?',
@@ -21,11 +21,11 @@ const faq = [
   },
   {
     q: 'Does it cost anything?',
-    a: 'No. CertKit is free, has no accounts, no ads and no personal tracking. There is a reserved slot for a future certificate-provider partner link, and it is currently unused — no affiliate links are shown.',
+    a: 'No. CertKit is free, has no accounts, no ads and no personal tracking. There is a reserved slot for a future certificate-provider partner link, and it is currently unused, so no affiliate links are shown.',
   },
   {
     q: 'Should I use this with production keys?',
-    a: 'Only on a machine you trust — that rule applies to every key tool, including this one. Because CertKit makes no network calls, it is safe to use fully offline, which is exactly how sensitive work should be done.',
+    a: 'Only on a machine you trust. That rule applies to every key tool, including this one. Because CertKit makes no network calls, it is safe to use fully offline, which is exactly how sensitive work should be done.',
   },
 ];
 
@@ -53,7 +53,7 @@ const jsonLd = [
 ---
 
 <Base
-  title="CertKit — certificate tools that never see your keys"
+  title="CertKit: certificate tools that never see your keys"
   description="Free browser-local certificate tools: convert PFX to PEM, decode certificates and CSRs, check key/cert matches and order chains. Nothing is uploaded."
   jsonLd={jsonLd}
 >
@@ -61,7 +61,7 @@ const jsonLd = [
     <section class="hero" data-motion="hero">
       <h1 data-motion="hero-title">Certificate tools that never see your keys</h1>
       <p class="lead" data-motion="hero-sub">
-        PFX conversion, certificate and CSR decoding, key matching, chain ordering — everything runs
+        PFX conversion, certificate and CSR decoding, key matching, chain ordering. Everything runs
         in your browser. No uploads, no accounts, no server.
       </p>
       <ul class="hero-badges">
@@ -98,7 +98,7 @@ const jsonLd = [
         <ul>
           <li>
             <strong>One vendored library.</strong> Parsing and crypto use a pinned copy of
-            <span class="mono">node-forge 1.4.0</span> served from this domain — not a CDN, and not a
+            <span class="mono">node-forge 1.4.0</span> served from this domain, not a CDN, and not a
             service.
           </li>
           <li>
@@ -124,7 +124,7 @@ const jsonLd = [
         <ul>
           <li>
             No ads. No tracking pixels. Anonymous, cookie-less visit counts via Cloudflare Web
-            Analytics — no personal data, no cross-site tracking, no fingerprinting. All file
+            Analytics: no personal data, no cross-site tracking, no fingerprinting. All file
             processing stays local: every tool works fully offline once the page has loaded.
           </li>
           <li>No affiliate links (a certificate-provider partner slot exists in the config and is unused).</li>
@@ -132,16 +132,16 @@ const jsonLd = [
           <li>
             {
               REPO_URL ? (
-                <span><a href={REPO_URL}>Open-source repository</a> — read the exact code that runs.</span>
+                <span><a href={REPO_URL}>Open-source repository</a>. Read the exact code that runs.</span>
               ) : (
                 <span>
-                  <span class="placeholder">Open-source repository — link coming soon</span>: the
+                  <span class="placeholder">Open-source repository, link coming soon</span>: the
                   parsing library and tests are already published with the project.
                 </span>
               )
             }
           </li>
-          <li>RSA-first v1, with EC/Ed25519 on the <a href="/roadmap/">roadmap</a> — limitations are stated up front, not discovered later.</li>
+          <li>RSA-first v1, with EC/Ed25519 on the <a href="/roadmap/">roadmap</a>. Limitations are stated up front, not discovered later.</li>
         </ul>
       </div>
     </section>
@@ -159,6 +159,6 @@ const jsonLd = [
         </details>
       ))}
     </section>
-    {/* AFFILIATE_CERT_SLOT: reserved (see src/lib/site.ts) — intentionally unused in v1 */}
+    {/* AFFILIATE_CERT_SLOT: reserved (see src/lib/site.ts), intentionally unused in v1 */}
   </div>
 </Base>

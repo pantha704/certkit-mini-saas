@@ -1,0 +1,18 @@
+---
+/**
+ * Shared "Load sample" control. Fills the surrounding form with a built-in
+ * test certificate and runs the tool, so output can be seen before any real
+ * key or file is used. Wired by /js/samples.js.
+ */
+interface Props {
+  /** Sample id understood by /js/samples.js, e.g. "pfx-to-pem". */
+  kind: string;
+  label?: string;
+  hint?: string;
+}
+
+const { kind, label = 'Load sample', hint = 'Built-in test certificate. Safe to try.' } = Astro.props;
+---
+
+<button type="button" class="btn btn-secondary" data-sample={kind}>{label}</button>
+<span class="small muted sample-hint">{hint}</span>

@@ -1,5 +1,5 @@
 /**
- * Certificate decoder — PEM / base64-DER input, human-readable view + raw ASN.1 JSON.
+ * Certificate decoder: PEM / base64-DER input, human-readable view + raw ASN.1 JSON.
  */
 (function () {
   'use strict';

@@ -43,11 +43,11 @@ const pageTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32 48x48" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
     <script>
       import '../scripts/motion';
-      import '../scripts/smooth-scroll';
     </script>
     <!-- Cloudflare Web Analytics: cookie-less, anonymous visit counts (see /privacy/) -->
     <Fragment

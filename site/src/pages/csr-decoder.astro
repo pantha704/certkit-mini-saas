@@ -1,12 +1,13 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="CSR Decoder — check SANs, key and signature"
+  title="CSR Decoder: check SANs, key and signature"
   description="Decode a certificate signing request (CSR) in your browser: subject, SANs, extensions, key size, signature algorithm and signature verification. PEM or DER."
   h1="CSR decoder"
-  lead="Read a CSR before you sign it: subject, requested SANs and extensions, public key details, signature algorithm — and whether the CSR’s own signature verifies."
+  lead="Read a CSR before you sign it: subject, requested SANs and extensions, public key details, signature algorithm, and whether the CSR’s own signature verifies."
   path="/csr-decoder/"
   toolScript="/js/tools/csr-decoder.js"
   jsonLdName="CSR decoder"
@@ -14,19 +15,19 @@ import ToolPage from '../layouts/ToolPage.astro';
   faq={[
     {
       q: 'What is checked automatically?',
-      a: 'The CSR signature is verified against its own public key — that proves the request was signed by the private key that matches the included public key. Nothing else is trusted or verified.',
+      a: 'The CSR signature is verified against its own public key. That proves the request was signed by the private key that matches the included public key. Nothing else is trusted or verified.',
     },
     {
       q: 'What does a valid CSR signature tell me?',
-      a: 'It tells you the request is internally consistent: whoever created it held the private key at signing time. It does not tell you who they are — that is the CA’s job.',
+      a: 'It tells you the request is internally consistent: whoever created it held the private key at signing time. It does not tell you who they are. That is the CA’s job.',
     },
     {
       q: 'Can I decode an EC key CSR?',
-      a: 'Not in v1 — CertKit parses RSA objects only and reports a friendly unsupported error. EC support is the first item on the roadmap.',
+      a: 'Not in v1. CertKit parses RSA objects only and reports a friendly unsupported error. EC support is the first item on the roadmap.',
     },
     {
       q: 'Is the CSR uploaded anywhere?',
-      a: 'No. The request is parsed by JavaScript in this tab. There are no network calls in the flow — verifiable in DevTools → Network.',
+      a: 'No. The request is parsed by JavaScript in this tab. There are no network calls in the flow, verifiable in DevTools → Network.',
     },
   ]}
 >
@@ -38,7 +39,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="file-drop" data-dropzone>
       <label class="field-label" for="csr-file">
         CSR file
-        <span class="hint">.csr, .pem or .der — drag &amp; drop, or choose</span>
+        <span class="hint">.csr, .pem or .der. Drag &amp; drop, or choose</span>
       </label>
       <input type="file" id="csr-file" accept=".csr,.pem,.der,.txt" />
     </div>
@@ -47,10 +48,11 @@ import ToolPage from '../layouts/ToolPage.astro';
         or paste PEM / base64 DER
         <span class="hint">A file wins if both are provided.</span>
       </label>
-      <textarea data-lenis-prevent id="csr-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE REQUEST-----"></textarea>
+      <textarea id="csr-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE REQUEST-----"></textarea>
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="csr-run">Decode CSR</button>
+      <SampleButton kind="csr-decoder" />
     </div>
   </form>
 
@@ -79,13 +81,13 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-pem"></span>
       </div>
       <label class="visually-hidden" for="out-pem">CSR PEM</label>
-      <textarea data-lenis-prevent id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
     </div>
 
     <div id="pane-json" hidden>
       <h3>ASN.1 as JSON</h3>
       <p class="small muted">Long values are truncated with a byte count.</p>
-      <pre id="csr-json" class="raw-json" data-lenis-prevent tabindex="0"></pre>
+      <pre id="csr-json" class="raw-json" tabindex="0"></pre>
     </div>
   </section>
 </ToolPage>

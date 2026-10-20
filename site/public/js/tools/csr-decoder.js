@@ -1,5 +1,5 @@
 /**
- * CSR decoder — subject, requested SANs/extensions, key info, signature check,
+ * CSR decoder: subject, requested SANs/extensions, key info, signature check,
  * raw ASN.1 JSON.
  */
 (function () {
@@ -46,9 +46,9 @@
       [
         'Signature check',
         info.signatureValid === true
-          ? 'Verified — signed by the matching private key'
+          ? 'Verified: signed by the matching private key'
           : info.signatureValid === false
-            ? 'Failed — the signature does not match the public key'
+            ? 'Failed: the signature does not match the public key'
             : 'Could not be checked' + (info.signatureError ? ': ' + info.signatureError : ''),
       ],
       ['Requested extensions', info.extensions.length ? String(info.extensions.length) : 'none'],
@@ -61,7 +61,7 @@
         sanList.appendChild(UI.el('li', { class: 'mono', text: s.type + ': ' + s.value }));
       });
     } else {
-      sanList.appendChild(UI.el('li', { class: 'muted', text: 'No SANs requested in this CSR — some CAs will add them, some will reject it.' }));
+      sanList.appendChild(UI.el('li', { class: 'muted', text: 'No SANs requested in this CSR. Some CAs will add them, some will reject it.' }));
     }
 
     UI.fillSummary(

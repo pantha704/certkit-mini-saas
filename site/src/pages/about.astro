@@ -16,7 +16,7 @@ const orgLd = {
 ---
 
 <Base
-  title="About — why CertKit exists"
+  title="About: why CertKit exists"
   description="CertKit is a set of browser-local certificate and key tools built on one rule: private keys never leave your device. RSA-first v1, EC support on the roadmap."
   jsonLd={[orgLd]}
 >
@@ -37,7 +37,7 @@ const orgLd = {
       <h2>Why this exists</h2>
       <p>
         Converting a PFX, decoding a CSR or checking whether a key matches a certificate are small,
-        routine jobs — the kind that should take seconds. Yet almost every free tool online asks you
+        routine jobs, the kind that should take seconds. Yet almost every free tool online asks you
         to paste or upload the exact files you are trying to protect. CertKit takes the other
         position: the tools are static pages, all processing happens in your browser, and the claims
         are verifiable with DevTools.
@@ -47,13 +47,13 @@ const orgLd = {
       <ul>
         <li><strong>Local by default.</strong> No upload, no server, no storage.</li>
         <li><strong>Honest limits.</strong> v1 is RSA-first; EC/Ed25519 objects are reported as unsupported rather than mishandled, and the PEM → PFX writer documents its SHA-1 MAC and unencrypted certificate bags instead of hiding them.</li>
-        <li><strong>No business model aimed at your data.</strong> No ads, no accounts, no personal tracking — the only analytics is a cookie-less Cloudflare Web Analytics beacon for anonymous visit counts (see the <a href="/privacy/#visit-counts">privacy note</a>). A single affiliate slot exists in the configuration for a possible future certificate-provider partner; it is unused in v1 and labeled as such.</li>
+        <li><strong>No business model aimed at your data.</strong> No ads, no accounts, no personal tracking. The only analytics is a cookie-less Cloudflare Web Analytics beacon for anonymous visit counts (see the <a href="/privacy/#visit-counts">privacy note</a>). A single affiliate slot exists in the configuration for a possible future certificate-provider partner; it is unused in v1 and labeled as such.</li>
         <li><strong>Tested, not vibes.</strong> Every claim on this site has a fixture and a test behind it, run against OpenSSL ground truth where possible.</li>
       </ul>
 
       <h2>How it is built</h2>
       <p>
-        Static pages (Astro), zero backend, and one vendored crypto/ASN.1 library — node-forge 1.4.0 —
+        Static pages (Astro), zero backend, and one vendored crypto/ASN.1 library, node-forge 1.4.0,
         served from this domain. No CDNs, no fonts fetched from anywhere, and exactly one third-party
         script: the cookie-less Cloudflare Web Analytics beacon that counts visits. The
         test suite runs the same code in Node and in a real headless browser, with PKCS#12, PEM, DER

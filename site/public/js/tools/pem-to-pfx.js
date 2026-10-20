@@ -85,7 +85,7 @@
     UI.setBadge(document.getElementById('match-badge'), 'ok', 'key matches certificate');
     UI.fillSummary(document.getElementById('file-summary'), [
       ['Certificates included', String(r.certCount)],
-      ['Key', 'RSA, ' + r.match.keyBits + '-bit'],
+      ['Key', 'RSA, ' + r.keyBits + '-bit'],
       ['PFX size', UI.fmtBytes(r.bytes.length)],
       ['MAC', 'HMAC-SHA-1 (documented limit)'],
       ['Certificate bags', 'stored unencrypted inside the container (documented limit)'],

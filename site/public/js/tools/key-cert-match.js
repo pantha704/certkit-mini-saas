@@ -1,5 +1,5 @@
 /**
- * Key ↔ certificate match — RSA modulus comparison + real sign/verify round-trip.
+ * Key ↔ certificate match: RSA modulus comparison + real sign/verify round-trip.
  */
 (function () {
   'use strict';
@@ -43,16 +43,16 @@
   function render(r, keyName, certName) {
     var badge = document.getElementById('match-badge');
     if (r.match) {
-      UI.setBadge(badge, 'ok', 'MATCH — this key belongs to this certificate');
+      UI.setBadge(badge, 'ok', 'MATCH: this key belongs to this certificate');
     } else {
-      UI.setBadge(badge, 'bad', 'NO MATCH — key and certificate are not a pair');
+      UI.setBadge(badge, 'bad', 'NO MATCH: key and certificate are not a pair');
     }
 
     var cn = UI.attrValue(r.certInfo.subject, 'CN');
     var sigText;
-    if (r.signVerifyPassed) sigText = 'Passed — the private key signed a test message that this certificate verified';
-    else if (r.signVerifyError) sigText = 'Failed — ' + r.signVerifyError;
-    else if (r.signVerify === false) sigText = 'Failed — the certificate did not verify the signature';
+    if (r.signVerifyPassed) sigText = 'Passed: the private key signed a test message that this certificate verified';
+    else if (r.signVerifyError) sigText = 'Failed: ' + r.signVerifyError;
+    else if (r.signVerify === false) sigText = 'Failed: the certificate did not verify the signature';
     else sigText = 'Not performed';
 
     UI.fillSummary(document.getElementById('match-summary'), [
@@ -60,7 +60,7 @@
       ['Certificate', (cn ? 'CN=' + cn : UI.formatDN(r.certInfo.subject)) + (certName ? ' (' + certName + ')' : '')],
       [
         'Modulus comparison',
-        r.modulusEqual === true ? 'Identical modulus and public exponent' : 'Modulus differs — different key pair',
+        r.modulusEqual === true ? 'Identical modulus and public exponent' : 'Modulus differs: different key pair',
       ],
       ['Sign / verify round-trip', sigText],
       ['Certificate validity', r.certInfo.expired ? 'Expired' : 'Within validity window'],
@@ -117,11 +117,11 @@
     }
     Promise.all(jobs).then(function () {
       if (!keyText) {
-        UI.setError('Provide the private key — paste it or choose a key file.');
+        UI.setError('Provide the private key. Paste it or choose a key file.');
         return;
       }
       if (!certValue) {
-        UI.setError('Provide the certificate — paste it or choose a certificate file.');
+        UI.setError('Provide the certificate. Paste it or choose a certificate file.');
         return;
       }
       run(keyText, certValue);

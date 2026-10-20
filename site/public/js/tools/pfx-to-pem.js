@@ -19,7 +19,7 @@
     UI.hide('results');
     if (/MAC could not be verified/i.test(msg)) {
       UI.setError(
-        'Wrong password, or the file is damaged — the PKCS#12 integrity check (MAC) failed. ' +
+        'Wrong password, or the file is damaged. The PKCS#12 integrity check (MAC) failed. ' +
           'Passwords are case-sensitive, so check for typos.'
       );
       UI.announce('Error: wrong password or damaged file.');
@@ -89,7 +89,7 @@
     UI.setError('');
     var file = fileInput.files && fileInput.files[0];
     if (!file) {
-      UI.setError('Choose a .pfx / .p12 file first — drag & drop it onto the file box or use the picker.');
+      UI.setError('Choose a .pfx / .p12 file first. Drag & drop it onto the file box or use the picker.');
       UI.announce('Error: no file selected.');
       return;
     }

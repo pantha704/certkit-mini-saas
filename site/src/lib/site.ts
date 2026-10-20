@@ -12,7 +12,7 @@ export const REPO_URL = 'https://github.com/pantha704/localcertkit';
 
 /**
  * Reserved slot for a future certificate-provider affiliate partner.
- * Unused in v1 — CertKit ships with zero affiliate links.
+ * Unused in v1. CertKit ships with zero affiliate links.
  */
 export const AFFILIATE_CERT_SLOT = '';
 
@@ -36,7 +36,7 @@ export const TOOLS: ToolLink[] = [
   {
     href: '/certificate-decoder/',
     label: 'Certificate decoder',
-    blurb: 'Subject, issuer, SANs, validity, serial, signature algorithm — PEM or DER.',
+    blurb: 'Subject, issuer, SANs, validity, serial, signature algorithm. PEM or DER.',
   },
   {
     href: '/csr-decoder/',
@@ -66,6 +66,7 @@ export const NAV = [
   { href: '/roadmap/', label: 'Roadmap' },
   { href: '/privacy/', label: 'Privacy' },
   { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
 ];
 
 /** schema.org WebApplication block shared by every tool page. */
@@ -77,7 +78,7 @@ export function toolJsonLd(opts: {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
-    name: `${opts.name} — ${SITE.name}`,
+    name: `${opts.name} | ${SITE.name}`,
     url: `${SITE.url}${opts.path}`,
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Any modern browser',

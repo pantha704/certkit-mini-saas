@@ -7,7 +7,7 @@ const siteUrl = SITE.url.replace(/\/$/, '');
 const privacyLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Privacy — nothing leaves your browser',
+  name: 'Privacy: nothing leaves your browser',
   url: `${siteUrl}/privacy/`,
   description:
     'CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts.',
@@ -20,7 +20,7 @@ const privacyLd = {
 ---
 
 <Base
-  title="Privacy — nothing leaves your browser"
+  title="Privacy: nothing leaves your browser"
   description="CertKit privacy note: files are processed locally in your browser, nothing is uploaded, no cookies, no accounts, anonymous cookie-less visit counts."
   jsonLd={[privacyLd]}
 >
@@ -50,7 +50,7 @@ const privacyLd = {
         <li>No cookies, no localStorage, no fingerprinting, no session recording.</li>
         <li>
           No tracking pixels, no ad networks, no social embeds. Visit counts are anonymous and
-          cookie-less — read the <a href="#visit-counts">Visit counts</a> section below.
+          cookie-less. Read the <a href="#visit-counts">Visit counts</a> section below.
         </li>
         <li>No accounts, no email collection, no newsletter.</li>
       </ul>
@@ -58,7 +58,7 @@ const privacyLd = {
       <p>
         The site is static and hosted on Cloudflare Pages. Like virtually every web host, Cloudflare
         receives standard request metadata (IP address, user agent, requested URL) when your browser
-        loads a page — that is how the HTML reaches you. No request that runs a tool carries your
+        loads a page. That is how the HTML reaches you. No request that runs a tool carries your
         data, so that metadata never includes a file, key or password. See{' '}
         <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">Cloudflare’s privacy policy</a>
         for how they handle request logs.
@@ -67,7 +67,7 @@ const privacyLd = {
       <p>
         The site loads one small third-party script: Cloudflare Web Analytics
         (<span class="mono">static.cloudflareinsights.com</span>). It is the only request the page
-        makes to a host other than this one, and it does one thing — records that a page was opened.
+        makes to a host other than this one, and it does one thing: records that a page was opened.
         It sets no cookies, stores nothing on your device, does not fingerprint you and does not
         follow you across other sites. The aggregate report shows which page was viewed, the
         referring site, the country and the browser family; never an individual visitor, and never
@@ -81,13 +81,17 @@ const privacyLd = {
       <h2>Verifying the claims</h2>
       <p>
         Open DevTools → Network, clear the log, then run any tool: you will see no request appear
-        while your file is processed — the only third-party entry is the analytics beacon loaded
-        with the page. Disconnect your network after a page loads and the tools keep working — the
+        while your file is processed. The one exception is the “Load sample” button, which fetches
+        that test file from this site (again, nothing of yours is involved). The only third-party entry is the analytics beacon loaded
+        with the page. Disconnect your network after a page loads and the tools keep working. That is the
         strongest possible proof that processing is local.
       </p>
       <h2>Contact</h2>
       <p>
-        Questions about the privacy model? The parsing library, tests and site source are public at{' '}
+        Questions about the privacy model? Write to{' '}
+        <a href="mailto:contact@wheelchairrampcalculator.com">contact@wheelchairrampcalculator.com</a>{' '}
+        or see the <a href="/contact/">contact page</a>. The parsing library, tests and site source
+        are public at{' '}
         <a href="https://github.com/pantha704/localcertkit">github.com/pantha704/localcertkit</a>,
         open an issue if anything looks wrong.
       </p>

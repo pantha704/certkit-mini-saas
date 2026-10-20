@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { REPO_URL } from '../lib/site';
+
+const EMAIL = 'contact@wheelchairrampcalculator.com';
+---
+
+<Base
+  title="Contact"
+  description="Contact CertKit: email contact@wheelchairrampcalculator.com for questions, bug reports or corrections. Replies usually arrive within a few days."
+>
+  <div class="wrap tool-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Contact</li>
+      </ol>
+    </nav>
+
+    <header class="tool-head">
+      <h1>Contact</h1>
+      <p class="lead">Questions, bugs or a claim on this site that does not match what you see? Say so.</p>
+    </header>
+
+    <section class="card">
+      <h2>Email</h2>
+      <p>
+        Write to <a href={`mailto:${EMAIL}`}>{EMAIL}</a>. Replies usually arrive within a few days,
+        because this is a small independent project, not a support desk.
+      </p>
+      <p class="small muted">
+        Please do not attach real private keys, passwords or production certificates. Describe the
+        problem and use the built-in sample data instead.
+      </p>
+
+      <h2>GitHub issues</h2>
+      <p>
+        For reproducible bugs and feature requests you can also open an issue at{' '}
+        <a href={REPO_URL}>{REPO_URL.replace('https://', '')}</a>. Include the page URL, your browser
+        and the exact steps; that is usually enough to reproduce a parser problem.
+      </p>
+
+      <h2>What helps a report</h2>
+      <ul>
+        <li>The page you were on (for example /pfx-to-pem/).</li>
+        <li>What you expected and what happened instead.</li>
+        <li>The browser name and version.</li>
+        <li>Any error text shown in the page, word for word.</li>
+      </ul>
+    </section>
+  </div>
+</Base>

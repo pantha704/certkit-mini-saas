@@ -1,5 +1,5 @@
 /**
- * Chain order — order certificates leaf → intermediate → root, verify issuer
+ * Chain order: order certificates leaf → intermediate → root, verify issuer
  * links, report missing issuers / unlinked certificates / duplicates.
  */
 (function () {
@@ -27,7 +27,7 @@
   function render(r) {
     var badge = document.getElementById('chain-badge');
     if (r.allValid) {
-      UI.setBadge(badge, 'ok', 'chain complete — all links verified');
+      UI.setBadge(badge, 'ok', 'chain complete: all links verified');
     } else if (r.missing.length) {
       UI.setBadge(badge, 'warn', r.missing.length + ' missing issuer link' + (r.missing.length === 1 ? '' : 's'));
     } else if (r.unlinked.length) {
@@ -69,7 +69,7 @@
               (link.fromCN || '(certificate)') +
               ' ← issued by ' +
               (link.toCN || '(certificate)') +
-              ' — ' +
+              ': ' +
               (verified ? 'signature verified' : link.signatureValid === false ? 'SIGNATURE CHECK FAILED' : 'signature not verifiable'),
           })
         );
@@ -108,7 +108,7 @@
             text:
               'CN=' +
               (u.entry.subjectCN || '(no CN)') +
-              ' — issuer ' +
+              ', issuer ' +
               (u.entry.issuerCN ? 'CN=' + u.entry.issuerCN : UI.formatDN(u.entry.issuer)) +
               ' (not part of the ordered chain)',
           })

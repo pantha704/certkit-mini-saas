@@ -1,12 +1,13 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="Certificate Decoder — PEM & DER, local"
+  title="Certificate Decoder: PEM & DER, local"
   description="Decode an X.509 certificate in your browser: subject, issuer, validity, SANs, key size, signature algorithm, fingerprints and extensions. PEM or DER, free."
   h1="Certificate decoder"
-  lead="Paste a certificate (PEM or base64 DER) or drop a file to read its subject, issuer, SANs, validity, serial, signature algorithm and extensions — with a raw JSON view."
+  lead="Paste a certificate (PEM or base64 DER) or drop a file to read its subject, issuer, SANs, validity, serial, signature algorithm and extensions, with a raw JSON view."
   path="/certificate-decoder/"
   toolScript="/js/tools/certificate-decoder.js"
   jsonLdName="Certificate decoder"
@@ -38,7 +39,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="file-drop" data-dropzone>
       <label class="field-label" for="cert-file">
         Certificate file
-        <span class="hint">.pem, .crt, .cer or .der — drag &amp; drop, or choose</span>
+        <span class="hint">.pem, .crt, .cer or .der. Drag &amp; drop, or choose</span>
       </label>
       <input type="file" id="cert-file" accept=".pem,.crt,.cer,.der,.txt" />
     </div>
@@ -47,18 +48,19 @@ import ToolPage from '../layouts/ToolPage.astro';
         or paste PEM / base64 DER
         <span class="hint">A file wins if both are provided.</span>
       </label>
-      <textarea data-lenis-prevent id="cert-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea id="cert-input" class="mono" spellcheck="false" rows="8" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="cert-run">Decode certificate</button>
+      <SampleButton kind="certificate-decoder" />
     </div>
-    <p class="small muted">RSA-first v1: EC / Ed25519 certificates are not supported yet — <a href="/roadmap/">see the roadmap</a>.</p>
+    <p class="small muted">RSA-first v1: EC / Ed25519 certificates are not supported yet. <a href="/roadmap/">See the roadmap</a>.</p>
   </form>
 
   <section id="results" class="card" aria-labelledby="results-heading" hidden>
     <div class="result-head">
       <h2 id="results-heading">Decoded certificate</h2>
-      <span id="validity-badge" class="badge badge-neutral">—</span>
+      <span id="validity-badge" class="badge badge-neutral">Not checked</span>
     </div>
 
     <div class="btn-row">
@@ -81,13 +83,13 @@ import ToolPage from '../layouts/ToolPage.astro';
         <span class="small muted" id="copy-status-pem"></span>
       </div>
       <label class="visually-hidden" for="out-pem">Certificate PEM</label>
-      <textarea data-lenis-prevent id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-pem" class="mono" readonly spellcheck="false" hidden></textarea>
     </div>
 
     <div id="pane-json" hidden>
       <h3>ASN.1 as JSON</h3>
       <p class="small muted">Long values are truncated with a byte count. This is a structural view, not a re-encoded certificate.</p>
-      <pre id="cert-json" class="raw-json" data-lenis-prevent tabindex="0"></pre>
+      <pre id="cert-json" class="raw-json" tabindex="0"></pre>
     </div>
   </section>
 </ToolPage>

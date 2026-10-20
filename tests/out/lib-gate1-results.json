@@ -6,7 +6,7 @@
     {
       "name": "decode cert from PEM",
       "ok": true,
-      "ms": 9.2,
+      "ms": 7.2,
       "cn": "leaf.certkit.test",
       "sans": 3,
       "sig": "sha256WithRSAEncryption"
@@ -14,15 +14,15 @@
     {
       "name": "decode cert from DER bytes",
       "ok": true,
-      "ms": 3.7,
+      "ms": 2.8,
       "cn": "leaf.certkit.test",
       "derBytes": 886
     },
     {
       "name": "EC certificate → friendly EC_UNSUPPORTED",
       "ok": true,
-      "ms": 0.8,
-      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only — EC/Ed2551"
+      "ms": 0.6,
+      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only. EC/Ed25519"
     },
     {
       "name": "garbage certificate input → clear error",
@@ -33,7 +33,7 @@
     {
       "name": "decode CSR (SANs + signature verify)",
       "ok": true,
-      "ms": 11.4,
+      "ms": 5.4,
       "cn": "leaf.certkit.test",
       "sans": "DNS:leaf.certkit.test,DNS:www.leaf.certkit.test,IP:203.0.113.10",
       "sigValid": true
@@ -47,14 +47,14 @@
     {
       "name": "key matches own certificate",
       "ok": true,
-      "ms": 50.4,
+      "ms": 45.4,
       "match": true,
       "signVerify": true
     },
     {
       "name": "different key → NO match (negative control)",
       "ok": true,
-      "ms": 34.5,
+      "ms": 36.4,
       "match": false,
       "modulusEqual": false,
       "signVerify": null,
@@ -63,13 +63,13 @@
     {
       "name": "EC key → friendly EC_UNSUPPORTED",
       "ok": true,
-      "ms": 0.5,
-      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only — EC/Ed2551"
+      "ms": 0.9,
+      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only. EC/Ed25519"
     },
     {
       "name": "chain order: shuffled root/leaf/inter → leaf,inter,root",
       "ok": true,
-      "ms": 5.3,
+      "ms": 6.3,
       "order": "leaf.certkit.test → inter.certkit.test → root.certkit.test",
       "links": 2,
       "sigValid": true
@@ -77,14 +77,14 @@
     {
       "name": "chain order: missing intermediate reported",
       "ok": true,
-      "ms": 1.7,
+      "ms": 6.7,
       "missing": "inter.certkit.test",
       "unlinked": "root.certkit.test"
     },
     {
       "name": "chain order: duplicates counted, chain still ordered",
       "ok": true,
-      "ms": 4.7,
+      "ms": 5.3,
       "duplicates": 1,
       "chain": 3
     },
@@ -97,26 +97,26 @@
     {
       "name": "JWK set inspect (RSA + EC members)",
       "ok": true,
-      "ms": 0.5,
+      "ms": 1,
       "kind": "JWK Set",
       "keys": "RSA+EC"
     },
     {
       "name": "private JWK → private-material warning",
       "ok": true,
-      "ms": 0.2,
+      "ms": 0.3,
       "warnings": 2
     },
     {
       "name": "invalid JWK JSON → clear error",
       "ok": true,
-      "ms": 0.1,
+      "ms": 0,
       "message": "Input is neither a JWK (object with \"kty\") nor a JWK set (object with a \"keys\" array)."
     },
     {
       "name": "pemToPfx produces a valid PKCS#12 (forge re-read)",
       "ok": true,
-      "ms": 120.6,
+      "ms": 116.7,
       "pfxBytes": 3462,
       "certBags": 2,
       "keyMatch": true
@@ -124,14 +124,14 @@
     {
       "name": "pemToPfx refuses mismatched key/cert",
       "ok": true,
-      "ms": 33,
-      "message": "The private key does not match the first certificate — refusing to build a broke"
+      "ms": 35.2,
+      "message": "The private key does not match the first certificate. Refusing to build a broken"
     },
     {
       "name": "pemToPfx EC key → friendly EC_UNSUPPORTED",
       "ok": true,
       "ms": 0.3,
-      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only — EC/Ed2551"
+      "message": "This looks like an EC or Ed25519 object. CertKit v1 handles RSA only. EC/Ed25519"
     }
   ]
 }

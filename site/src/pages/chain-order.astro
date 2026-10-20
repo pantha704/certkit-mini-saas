@@ -1,9 +1,10 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="Certificate Chain Order Tool — leaf to root"
+  title="Certificate Chain Order Tool: leaf to root"
   description="Sort a certificate bundle into chain order (leaf → intermediate → root) and find missing issuer links. Runs in your browser, PEM and DER."
   h1="Certificate chain order"
   lead="Paste several certificates (or drop files). CertKit figures out which is the leaf, orders the chain leaf → intermediate → root, verifies each issuer signature and lists missing links."
@@ -22,11 +23,11 @@ import ToolPage from '../layouts/ToolPage.astro';
     },
     {
       q: 'Is the signature check a validation?',
-      a: 'No. CertKit checks that each parent certificate cryptographically signed the child — a consistency check for building the chain. It does not validate trust anchors, revocation, hostnames or policy; use a real TLS validator for that.',
+      a: 'No. CertKit checks that each parent certificate cryptographically signed the child. It is a consistency check for building the chain. It does not validate trust anchors, revocation, hostnames or policy; use a real TLS validator for that.',
     },
     {
       q: 'What about duplicates?',
-      a: 'Duplicates are detected (same subject and serial) and counted, then ignored for ordering — handy when a concatenated bundle has the same intermediate twice.',
+      a: 'Duplicates are detected (same subject and serial) and counted, then ignored for ordering, handy when a concatenated bundle has the same intermediate twice.',
     },
   ]}
 >
@@ -38,7 +39,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     <div class="file-drop" data-dropzone>
       <label class="field-label" for="chain-files">
         Certificate files
-        <span class="hint">Select one or more .pem / .crt / .cer / .der files — drag &amp; drop works too</span>
+        <span class="hint">Select one or more .pem / .crt / .cer / .der files. Drag &amp; drop works too</span>
       </label>
       <input type="file" id="chain-files" accept=".pem,.crt,.cer,.der,.txt" multiple />
     </div>
@@ -47,17 +48,18 @@ import ToolPage from '../layouts/ToolPage.astro';
         or paste multiple PEM certificates
         <span class="hint">Any order. Files and pasted text are combined.</span>
       </label>
-      <textarea data-lenis-prevent id="chain-input" class="mono" spellcheck="false" rows="10" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea id="chain-input" class="mono" spellcheck="false" rows="10" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
     <div class="btn-row">
       <button type="submit" class="btn" id="chain-run">Order chain</button>
+      <SampleButton kind="chain-order" />
     </div>
   </form>
 
   <section id="results" class="card" aria-labelledby="results-heading" hidden>
     <div class="result-head">
       <h2 id="results-heading">Ordered chain</h2>
-      <span id="chain-badge" class="badge badge-neutral">—</span>
+      <span id="chain-badge" class="badge badge-neutral">Not checked</span>
     </div>
 
     <ol id="chain-list" class="chain-list"></ol>
@@ -85,9 +87,9 @@ import ToolPage from '../layouts/ToolPage.astro';
 
     <div class="out">
       <h3>Ordered bundle (PEM)</h3>
-      <p class="small muted">The same certificates in leaf → root order — paste-ready for a server config.</p>
+      <p class="small muted">The same certificates in leaf → root order, paste-ready for a server config.</p>
       <label class="visually-hidden" for="out-chain">Ordered certificate bundle</label>
-      <textarea data-lenis-prevent id="out-chain" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-chain" class="mono" readonly spellcheck="false" hidden></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-chain" data-copy-status="copy-status-chain">Copy bundle</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-chain" data-filename="chain-ordered.pem" data-mime="application/x-pem-file">Download .pem</button>

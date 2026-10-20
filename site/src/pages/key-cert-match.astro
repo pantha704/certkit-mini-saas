@@ -1,12 +1,13 @@
 ---
 import ToolPage from '../layouts/ToolPage.astro';
+import SampleButton from '../components/SampleButton.astro';
 ---
 
 <ToolPage
-  title="Key & Certificate Match Check — local"
+  title="Key & Certificate Match Check: local"
   description="Check whether a private key belongs to a certificate: RSA modulus comparison plus a real sign/verify round-trip in your browser. Clear MATCH / NO MATCH result."
   h1="Key ↔ certificate match"
-  lead="Paste a private key and a certificate (or drop files). CertKit compares the RSA modulus and runs a real SHA-256 sign/verify round-trip between the two — not just a fingerprint guess."
+  lead="Paste a private key and a certificate (or drop files). CertKit compares the RSA modulus and runs a real SHA-256 sign/verify round-trip between the two, not just a fingerprint guess."
   path="/key-cert-match/"
   toolScript="/js/tools/key-cert-match.js"
   jsonLdName="Key and certificate match checker"
@@ -18,7 +19,7 @@ import ToolPage from '../layouts/ToolPage.astro';
     },
     {
       q: 'What does NO MATCH look like?',
-      a: 'A red NO MATCH badge, plus the detail that failed: modulus differs, or the sign/verify check failed. A NO MATCH means this key and certificate will not work together — find the right pair before deploying.',
+      a: 'A red NO MATCH badge, plus the detail that failed: modulus differs, or the sign/verify check failed. A NO MATCH means this key and certificate will not work together. Find the right pair before deploying.',
     },
     {
       q: 'Can a NO MATCH be a false alarm?',
@@ -36,33 +37,34 @@ import ToolPage from '../layouts/ToolPage.astro';
   <form id="tool-form" class="card" novalidate>
     <h2>Private key</h2>
     <div class="file-drop" data-dropzone>
-      <label class="field-label" for="key-file">Key file <span class="hint">.pem / .key — or paste below</span></label>
+      <label class="field-label" for="key-file">Key file <span class="hint">.pem / .key, or paste below</span></label>
       <input type="file" id="key-file" accept=".pem,.key,.txt" />
     </div>
     <div class="field">
       <label class="visually-hidden" for="key-input">Private key PEM</label>
-      <textarea data-lenis-prevent id="key-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
+      <textarea id="key-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN PRIVATE KEY-----"></textarea>
     </div>
 
     <h2>Certificate</h2>
     <div class="file-drop" data-dropzone>
-      <label class="field-label" for="cert-file">Certificate file <span class="hint">.pem / .crt / .cer / .der — or paste below</span></label>
+      <label class="field-label" for="cert-file">Certificate file <span class="hint">.pem / .crt / .cer / .der, or paste below</span></label>
       <input type="file" id="cert-file" accept=".pem,.crt,.cer,.der,.txt" />
     </div>
     <div class="field">
       <label class="visually-hidden" for="cert-input">Certificate PEM or DER</label>
-      <textarea data-lenis-prevent id="cert-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      <textarea id="cert-input" class="mono" spellcheck="false" rows="6" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
     </div>
 
     <div class="btn-row">
       <button type="submit" class="btn" id="match-run">Check match</button>
+      <SampleButton kind="key-cert-match" />
     </div>
   </form>
 
   <section id="results" class="card" aria-labelledby="results-heading" hidden>
     <div class="result-head">
       <h2 id="results-heading">Match result</h2>
-      <span id="match-badge" class="badge badge-neutral">—</span>
+      <span id="match-badge" class="badge badge-neutral">Not checked</span>
     </div>
     <dl class="summary-dl" id="match-summary"></dl>
     <p id="match-advice" class="small muted"></p>
@@ -71,7 +73,7 @@ import ToolPage from '../layouts/ToolPage.astro';
       <h3>Result report</h3>
       <p class="small muted">A text summary you can keep with the deployment notes.</p>
       <label class="visually-hidden" for="out-report">Match report text</label>
-      <textarea data-lenis-prevent id="out-report" class="mono" readonly spellcheck="false" hidden></textarea>
+      <textarea id="out-report" class="mono" readonly spellcheck="false" hidden></textarea>
       <div class="out-actions">
         <button type="button" class="btn btn-small btn-secondary" data-copy="out-report" data-copy-status="copy-status-report">Copy result</button>
         <button type="button" class="btn btn-small btn-secondary" data-download="out-report" data-filename="key-cert-match.txt" data-mime="text/plain;charset=utf-8">Download .txt</button>

@@ -1,16 +1,16 @@
 {
   "engine": "../../accessproof/engine (axe-core, WCAG 2.2 A/AA tags)",
-  "scannedAt": "2026-09-24T20:01:55.010Z",
+  "scannedAt": "2026-10-20T10:28:37.503Z",
   "baseUrl": "http://127.0.0.1:4400",
-  "totalPages": 12,
-  "cleanPages": 12,
+  "totalPages": 13,
+  "cleanPages": 13,
   "pagesWithViolations": 0,
   "rows": [
     {
       "page": "/",
       "slug": "home",
       "status": 200,
-      "title": "CertKit — certificate tools that never see your keys",
+      "title": "CertKit: certificate tools that never see your keys",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -28,7 +28,7 @@
       "page": "/pfx-to-pem/",
       "slug": "pfx-to-pem",
       "status": 200,
-      "title": "PFX to PEM Converter — local, nothing uploaded | CertKit",
+      "title": "PFX to PEM Converter: local, nothing uploaded | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -46,7 +46,7 @@
       "page": "/pem-to-pfx/",
       "slug": "pem-to-pfx",
       "status": 200,
-      "title": "PEM to PFX Converter — local, honest limits | CertKit",
+      "title": "PEM to PFX Converter: local, honest limits | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -64,7 +64,7 @@
       "page": "/certificate-decoder/",
       "slug": "certificate-decoder",
       "status": 200,
-      "title": "Certificate Decoder — PEM & DER, local | CertKit",
+      "title": "Certificate Decoder: PEM & DER, local | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -82,7 +82,7 @@
       "page": "/csr-decoder/",
       "slug": "csr-decoder",
       "status": 200,
-      "title": "CSR Decoder — check SANs, key and signature | CertKit",
+      "title": "CSR Decoder: check SANs, key and signature | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -100,7 +100,7 @@
       "page": "/key-cert-match/",
       "slug": "key-cert-match",
       "status": 200,
-      "title": "Key & Certificate Match Check — local | CertKit",
+      "title": "Key & Certificate Match Check: local | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -118,7 +118,7 @@
       "page": "/chain-order/",
       "slug": "chain-order",
       "status": 200,
-      "title": "Certificate Chain Order Tool — leaf to root | CertKit",
+      "title": "Certificate Chain Order Tool: leaf to root | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -136,7 +136,7 @@
       "page": "/der-jwk-inspector/",
       "slug": "der-jwk-inspector",
       "status": 200,
-      "title": "DER Certificate & JWK Inspector — local | CertKit",
+      "title": "DER Certificate & JWK Inspector: local | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -154,7 +154,7 @@
       "page": "/privacy/",
       "slug": "privacy",
       "status": 200,
-      "title": "Privacy — nothing leaves your browser | CertKit",
+      "title": "Privacy: nothing leaves your browser | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -172,7 +172,25 @@
       "page": "/about/",
       "slug": "about",
       "status": 200,
-      "title": "About — why CertKit exists",
+      "title": "About: why CertKit exists",
+      "violations": 0,
+      "violationIds": [],
+      "impactCounts": {
+        "violations": 0,
+        "critical": 0,
+        "serious": 0,
+        "moderate": 0,
+        "minor": 0,
+        "unknown": 0
+      },
+      "axeError": null,
+      "enginePageError": null
+    },
+    {
+      "page": "/contact/",
+      "slug": "contact",
+      "status": 200,
+      "title": "Contact | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -190,7 +208,7 @@
       "page": "/roadmap/",
       "slug": "roadmap",
       "status": 200,
-      "title": "Roadmap — EC support first | CertKit",
+      "title": "Roadmap: EC support first | CertKit",
       "violations": 0,
       "violationIds": [],
       "impactCounts": {
@@ -223,5 +241,5 @@
       "enginePageError": null
     }
   ],
-  "rawReportsDir": "/tmp/certkit-axe-MHV2Ij"
+  "rawReportsDir": "/tmp/certkit-axe-Mbql5C"
 }

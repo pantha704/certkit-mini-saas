@@ -118,17 +118,17 @@
     r.keys.forEach(function (key, i) {
       var tr = UI.el('tr', null, [
         UI.el('th', { scope: 'row', text: String(i + 1) }),
-        UI.el('td', { text: key.kty || '—' }),
-        UI.el('td', { class: 'mono', text: key.kid || '—' }),
-        UI.el('td', { class: 'mono', text: key.alg || '—' }),
-        UI.el('td', { text: key.use || (key.key_ops ? key.key_ops.join(', ') : '—') }),
-        UI.el('td', { text: (key.bits ? key.bits + '-bit' : '—') + (key.crv ? ' (' + key.crv + ')' : '') }),
-        UI.el('td', { text: key.hasPrivateMaterial ? 'YES — private material' : 'no' }),
+        UI.el('td', { text: key.kty || 'not set' }),
+        UI.el('td', { class: 'mono', text: key.kid || 'not set' }),
+        UI.el('td', { class: 'mono', text: key.alg || 'not set' }),
+        UI.el('td', { text: key.use || (key.key_ops ? key.key_ops.join(', ') : 'not set') }),
+        UI.el('td', { text: (key.bits ? key.bits + '-bit' : 'not set') + (key.crv ? ' (' + key.crv + ')' : '') }),
+        UI.el('td', { text: key.hasPrivateMaterial ? 'YES: private material' : 'no' }),
       ]);
       tbody.appendChild(tr);
     });
     document.getElementById('jwk-caption').textContent =
-      r.kind + ' — ' + r.keyCount + ' key' + (r.keyCount === 1 ? '' : 's');
+      r.kind + ': ' + r.keyCount + ' key' + (r.keyCount === 1 ? '' : 's');
 
     var report = {
       tool: 'CertKit JWK inspector',

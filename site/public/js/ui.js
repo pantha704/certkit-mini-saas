@@ -1,5 +1,5 @@
 /**
- * CertKit UI helpers — shared by all tool pages.
+ * CertKit UI helpers, shared by all tool pages.
  * Plain ES5-ish browser script, no dependencies besides window.CertKit.
  */
 (function () {
@@ -23,7 +23,7 @@
   }
 
   /**
-   * Notify the motion layer (bundled gsap) that an element appeared or changed.
+   * Notify the motion layer (src/scripts/motion.ts) that an element appeared or changed.
    * Plain custom event so this file keeps zero dependencies; if nothing is
    * listening, nothing happens.
    * @param {'reveal'|'pop'} effect
@@ -135,7 +135,7 @@
   function copyText(text, statusEl) {
     function done(ok) {
       if (!statusEl) return;
-      statusEl.textContent = ok ? 'Copied' : 'Copy failed — select the text and copy manually';
+      statusEl.textContent = ok ? 'Copied' : 'Copy failed. Select the text and copy manually';
       window.setTimeout(function () {
         statusEl.textContent = '';
       }, 2500);
