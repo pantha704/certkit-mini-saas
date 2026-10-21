@@ -16,7 +16,8 @@
     "test:mvp": "node tests/mvp-evidence.mjs",
     "test:axe": "node tests/axe-scan.mjs",
     "test": "node tests/node-smoke.mjs && node tests/browser-test.mjs && node tests/lib-gate1.mjs",
-    "deploy": "cd site && bun run build && cd .. && wrangler pages deploy site/dist --project-name localcertkit"
+    "deploy": "cd site && bun run build && cd .. && wrangler pages deploy site/dist --project-name localcertkit",
+    "test:browser:firefox": "BROWSER=firefox node tests/browser-test.mjs"
   },
   "dependencies": {
     "node-forge": "^1.4.0"

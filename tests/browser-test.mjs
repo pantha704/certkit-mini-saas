@@ -1,13 +1,14 @@
 /**
  * Browser evidence — runs the actual static page (index.html + vendor/forge.min.js
- * + lib/certkit.js) in headless Chromium, drives the UI exactly like a user would
- * (file picker + password + Parse button), and records what the page computed.
+ * + lib/certkit.js) in headless Chromium by default, or Firefox with BROWSER=firefox,
+ * drives the UI exactly like a user would (file picker + password + Parse button),
+ * and records what the page computed.
  *
  * Also round-trips the exported PEM back through node-forge in Node to prove the
  * exports are valid and the key/cert match is real.
  */
-import { chromium } from 'playwright-core';
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { chromium, firefox } from 'playwright-core';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -17,10 +18,28 @@ const forge = require('node-forge');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
+const BROWSER = (process.env.BROWSER || 'chromium').toLowerCase();
 const CHROME =
   process.env.CHROME_PATH ||
   `${process.env.HOME}/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome`;
-if (!existsSync(CHROME)) throw new Error('chromium not found at ' + CHROME);
+
+function findFirefox() {
+  if (process.env.FIREFOX_PATH) return process.env.FIREFOX_PATH;
+  const root = `${process.env.HOME}/.cache/ms-playwright`;
+  if (!existsSync(root)) return null;
+  const builds = readdirSync(root)
+    .filter((name) => /^firefox-\d+$/.test(name))
+    .sort((a, b) => Number(a.split('-')[1]) - Number(b.split('-')[1]));
+  for (const build of builds.reverse()) {
+    const candidate = join(root, build, 'firefox', 'firefox');
+    if (existsSync(candidate)) return candidate;
+  }
+  return null;
+}
+
+const FIREFOX = BROWSER === 'firefox' ? findFirefox() : null;
+if (BROWSER === 'firefox' && !FIREFOX) throw new Error('firefox not found in ~/.cache/ms-playwright');
+if (BROWSER !== 'firefox' && !existsSync(CHROME)) throw new Error('chromium not found at ' + CHROME);
 
 const fixtures = [
   { file: 'modern-aes256.p12', password: 'modernpass', expect: 'pass', runs: 1 },
@@ -67,7 +86,10 @@ const summarizeInPage = () => {
 };
 
 const pageUrl = pathToFileURL(join(root, 'index.html')).href;
-const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox'] });
+const browser =
+  BROWSER === 'firefox'
+    ? await firefox.launch({ executablePath: FIREFOX, headless: true })
+    : await chromium.launch({ executablePath: CHROME, headless: true, args: ['--no-sandbox'] });
 const context = await browser.newContext();
 const page = await context.newPage();
 
@@ -76,7 +98,7 @@ const pageErrors = [];
 page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text()); });
 page.on('pageerror', (e) => pageErrors.push(String(e)));
 
-const results = { engine: 'chromium-1243 headless', page: pageUrl, cases: [] };
+const results = { engine: `${BROWSER} headless`, page: pageUrl, cases: [] };
 
 for (const fx of fixtures) {
   const caseRow = { file: fx.file, password: fx.password === '' ? '(empty)' : fx.password, expect: fx.expect, runs: [] };
