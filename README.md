@@ -71,6 +71,8 @@ bun run site:check              # astro check (types)
 
 `CHROME_PATH` overrides the Chromium binary used by the Playwright tests
 (default: `~/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome`).
+`BROWSER=firefox bun run test:browser:firefox` runs the same browser evidence
+harness in Firefox (`FIREFOX_PATH` overrides the binary).
 
 ## Testing (evidence, not vibes)
 
