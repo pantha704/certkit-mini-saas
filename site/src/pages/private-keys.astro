@@ -1,0 +1,320 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../lib/site';
+
+const siteUrl = SITE.url.replace(/\/$/, '');
+
+const description =
+  'Where CertKit, SSL Shopper and certkit.io process your private key, how to check it yourself in DevTools, and the honest limits of browser-local tools.';
+
+const pageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Private keys never leave your browser',
+  url: `${siteUrl}/private-keys/`,
+  description,
+  isPartOf: { '@type': 'WebSite', name: SITE.name, url: `${siteUrl}/` },
+};
+---
+
+<Base title="Private keys never leave your browser" description={description} jsonLd={[pageLd]}>
+  <div class="wrap tool-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li aria-current="page">Private keys</li>
+      </ol>
+    </nav>
+
+    <header class="tool-head">
+      <h1>Private keys never leave your browser</h1>
+      <p class="lead">
+        CertKit reads your <span class="mono">.pfx</span>, PEM or DER file in the tab you are
+        looking at. The key is not uploaded, because there is no server step in the tool. Below:
+        what that means, how other converters handle the same file, and how to confirm it yourself
+        in about a minute.
+      </p>
+    </header>
+
+    <section class="section-tight" aria-labelledby="client-side">
+      <h2 id="client-side">What “client-side” means in practice</h2>
+      <div class="card">
+        <p>
+          When you choose a file or paste a key, the browser hands those bytes to JavaScript running
+          in this tab. That is the whole pipeline:
+        </p>
+        <ol class="steps">
+          <li>
+            The file is read with the browser’s File API. It stays in this tab’s memory; no form is
+            posted.
+          </li>
+          <li>
+            A local copy of <span class="mono">node-forge 1.4.0</span>, served from this domain,
+            parses and decrypts the container.
+          </li>
+          <li>
+            The result is written into the page: textareas you can copy, and downloads built as
+            in-memory blobs.
+          </li>
+          <li>
+            No request carries the file, the password or the key. The only network calls the tools
+            make are for their own code, plus the optional “Load sample” button, which fetches a
+            throwaway fixture from this site.
+          </li>
+        </ol>
+        <p>
+          “Server-side” is the other arrangement: your browser posts the file to a web server, that
+          server decrypts it, and the key exists for a moment in a process you do not control. It
+          works, and plenty of tools do it, but it is a different trust decision. A server-side
+          converter can also log request bodies, keep temporary files or sit behind a proxy you
+          have never heard of. CertKit removes that decision from the list.
+        </p>
+        <p class="small muted">
+          You do not have to take our word for any of this: the site source, the vendored library
+          and the browser tests are public in the
+          <a href="https://github.com/pantha704/certkit-mini-saas">repository</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="comparison">
+      <h2 id="comparison">Where each converter processes your key</h2>
+      <p>
+        Every cell below is taken from the vendor’s own page, fetched on 22 October 2026. Nothing
+        here says another tool is malicious. It says where the key is processed, which is a
+        question you can answer for yourself.
+      </p>
+
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Key handling comparison table">
+        <table class="data">
+          <caption>Key handling compared, pages checked 22 October 2026</caption>
+          <thead>
+            <tr>
+              <th scope="col">Tool</th>
+              <th scope="col">Where the key is processed</th>
+              <th scope="col">Upload required</th>
+              <th scope="col">Account required</th>
+              <th scope="col">Price</th>
+              <th scope="col">Source (checked)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">CertKit (this site)</th>
+              <td>
+                In your browser tab. No request carries the file; the parser runs from scripts served
+                by this domain.
+              </td>
+              <td>No</td>
+              <td>No</td>
+              <td>Free</td>
+              <td>
+                <a href="https://github.com/pantha704/certkit-mini-saas">Site source</a> plus the
+                DevTools check below · 22 Oct 2026
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">SSL Shopper SSL Converter</th>
+              <td>
+                On their server. The form is
+                <span class="mono">method="post" enctype="multipart/form-data"</span> to
+                <span class="mono">/assets/snippets/sslshopper/ajax/ajax_convert.php</span>, with
+                <span class="mono">keyFile</span> and <span class="mono">pfxPassword</span> fields.
+                Their own note says the key “is sent to the server”.
+              </td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Free, ad-supported</td>
+              <td>
+                <a href="https://www.sslshopper.com/ssl-converter.html"
+                  >sslshopper.com/ssl-converter.html</a
+                > · 22 Oct 2026
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">certkit.io PEM decoder</th>
+              <td>
+                In the CertKit API, server-side. Their page states: “The contents of the PEM file
+                will be sent to the CertKit API for decoding.”
+              </td>
+              <td>Yes</td>
+              <td>No for the free tool; sign-in for the product</td>
+              <td>Free tool; product from $99/mo</td>
+              <td>
+                <a href="https://certkit.io/tools/pem-certificate-decoder"
+                  >certkit.io/tools/pem-certificate-decoder</a
+                > · 22 Oct 2026
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">
+        Name collision worth knowing: <span class="mono">certkit.io</span> is a commercial
+        certificate-lifecycle product from TrackJS LLC, unrelated to this site. Both are called
+        CertKit; only one runs in your browser.
+      </p>
+    </section>
+
+    <section class="section-tight" aria-labelledby="verify">
+      <h2 id="verify">How to verify it yourself</h2>
+      <p>
+        This is a checkable claim, not a trust badge. Do it on a throwaway key the first time, then
+        on the tool you actually intend to use.
+      </p>
+      <div class="card">
+        <ol class="steps">
+          <li>
+            Open <a href="/pfx-to-pem/">PFX → PEM</a> and press <kbd>F12</kbd> (or right-click →
+            Inspect) to open DevTools. Switch to the <strong>Network</strong> tab and clear it.
+          </li>
+          <li>
+            Run a conversion, or paste a test PEM into
+            <a href="/certificate-decoder/">the certificate decoder</a>.
+          </li>
+          <li>
+            Watch the request list. There is no new request during processing, and no request body
+            contains <span class="mono">BEGIN RSA PRIVATE KEY</span> or the base64 body of your key.
+            Use the Network filter box to search for a distinctive string from your file; a
+            server-side tool matches, this one does not.
+          </li>
+          <li>
+            The stronger test: load the page, then disconnect from the network (airplane mode, or
+            DevTools → Network → Offline). The tools keep working, because the engine is already in
+            the tab.
+          </li>
+          <li>
+            Run the same steps on a converter you are comparing against. On SSL Shopper you will see
+            the <span class="mono">POST</span> to <span class="mono">ajax_convert.php</span> carrying
+            the key file, which is the behaviour their page describes.
+          </li>
+        </ol>
+        <p class="small muted">
+          Note the one exception: the “Load sample” button does fetch a fixture file from this site.
+          It is a test file we ship, never yours.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="limits">
+      <h2 id="limits">What browser-local does not protect you from</h2>
+      <p>
+        Client-side processing moves the trust boundary, it does not delete it. These limits are
+        real and worth stating plainly.
+      </p>
+      <div class="card">
+        <ul class="limits">
+          <li>
+            <strong>The page itself is code you have to trust.</strong> If this site were compromised
+            or served maliciously, the JavaScript could be changed to upload your key. “Runs
+            locally” describes the code that is running, not a guarantee about every future version.
+            Mitigations: the site is static files with no server-side code path, deploys come from
+            the public repository, and you can read the source before you paste anything sensitive.
+          </li>
+          <li>
+            <strong>Verify the domain.</strong> The address should be
+            <span class="mono">localcertkit.pages.dev</span> with a valid certificate. Bookmark it
+            rather than following a link from a search result or a message. A lookalike domain can
+            serve different JavaScript.
+          </li>
+          <li>
+            <strong>There is one third-party request on the page.</strong> Cloudflare Web Analytics,
+            a cookie-less visit counter, loads from
+            <span class="mono">static.cloudflareinsights.com</span>. It receives no file, key or
+            password, and it is the only script not served from this domain. It is disclosed in the
+            <a href="/privacy/">privacy note</a>.
+          </li>
+          <li>
+            <strong>Your browser and machine are part of the boundary.</strong> A malicious extension,
+            a compromised browser profile or malware on the device can read anything on the page.
+            For production keys, use a clean browser profile on a machine you control, and prefer
+            working offline.
+          </li>
+          <li>
+            <strong>This is not a key-management policy.</strong> Local processing does not decide
+            whether a key should exist in a browser at all. Handle production keys on the systems
+            that own them, keep backups, and rotate anything that has travelled further than it
+            should have.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="start">
+      <h2 id="start">Start with a throwaway key</h2>
+      <p>
+        Convert a test file, watch the Network tab, and only then bring a real one. Everything here
+        is free and needs no account.
+      </p>
+      <p class="cta-row">
+        <a class="btn" href="/pfx-to-pem/">Convert a PFX to PEM</a>
+        <a class="btn btn-secondary" href="/certificate-decoder/">Decode a certificate</a>
+        <a class="btn btn-secondary" href="/">All tools</a>
+      </p>
+      <p class="small muted">
+        Related: <a href="/key-cert-match/">key and certificate match</a> ·
+        <a href="/privacy/">privacy note</a> · <a href="/roadmap/">roadmap</a>
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .table-scroll {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+  }
+
+  .table-scroll table.data {
+    margin: 0;
+    min-width: 46rem;
+  }
+
+  .table-scroll:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .mono {
+    overflow-wrap: anywhere;
+  }
+
+  .steps {
+    margin: 0 0 1rem;
+  }
+
+  .steps li {
+    margin-bottom: 0.65rem;
+  }
+
+  .limits {
+    margin: 0;
+  }
+
+  .limits li + li {
+    margin-top: 0.85rem;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin: 1.25rem 0;
+  }
+
+  .cta-row .btn {
+    text-decoration: none;
+  }
+
+  kbd {
+    font-family: var(--mono);
+    font-size: 0.9em;
+    border: 1px solid var(--line-strong);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.05rem 0.35rem;
+    background: var(--tint);
+  }
+</style>

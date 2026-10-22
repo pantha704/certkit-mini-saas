@@ -63,6 +63,7 @@ export const TOOLS: ToolLink[] = [
 export const NAV = [
   { href: '/', label: 'Home' },
   { href: '/#tools', label: 'Tools' },
+  { href: '/private-keys/', label: 'Private keys' },
   { href: '/roadmap/', label: 'Roadmap' },
   { href: '/faq/', label: 'FAQ' },
   { href: '/privacy/', label: 'Privacy' },

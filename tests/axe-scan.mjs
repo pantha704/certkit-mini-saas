@@ -40,6 +40,7 @@ const PAGES = [
   { path: '/key-cert-match/', slug: 'key-cert-match' },
   { path: '/chain-order/', slug: 'chain-order' },
   { path: '/der-jwk-inspector/', slug: 'der-jwk-inspector' },
+  { path: '/private-keys/', slug: 'private-keys' },
   { path: '/privacy/', slug: 'privacy' },
   { path: '/about/', slug: 'about' },
   { path: '/contact/', slug: 'contact' },
